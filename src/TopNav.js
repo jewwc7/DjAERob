@@ -15,7 +15,7 @@ import {
   Slide,
   Fade,
 } from "@mui/material";
-import DehazeIcon from "@material-ui/icons/Dehaze";
+import DehazeIcon from "@mui/icons-material/Dehaze";
 //import Modal from "./Modal";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
