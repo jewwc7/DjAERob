@@ -15,20 +15,19 @@ import {
   Slide,
   Fade,
 } from "@mui/material";
-import { makeStyles } from "@material-ui/core/styles";
 import DehazeIcon from "@material-ui/icons/Dehaze";
 //import Modal from "./Modal";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 const TopNav = ({}) => {
-  const history = useNavigate();
+  const navigate = useNavigate();
   const appContext = useContext(AppContext);
   const { modalVisible, setModalVisible } = appContext;
   const [outline, setOutline] = useState({});
   const redBackgroundColor = "rgba(65,0,0,.9)";
   async function goToPage(page) {
-    history.push(page);
+    navigate.push(page);
   }
   useEffect(() => {
     console.log("paging");
