@@ -1,16 +1,10 @@
 import React, { useContext } from "react";
-import logo from "./logo.svg";
+
 import "./App.css";
 import MyButton from "./CustomButton";
 import TopNav from "./TopNav";
 import hero from "./Photos/hero.jpg";
 import purposeImg from "./Photos/purposeImg.jpg";
-import missionImg1 from "./Photos/missionImg1.jpg";
-import bioImg from "./Photos/bioImg.svg";
-import calendar from "./Photos/calendar.jpg";
-import TwitterIcon from "@material-ui/icons/Twitter";
-import FacebookIcon from "@material-ui/icons/Facebook";
-import InstagramIcon from "@material-ui/icons/Instagram";
 
 import {
   Grid,
