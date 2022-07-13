@@ -1,22 +1,5 @@
-import React, { useContext, useState } from "react";
-import MyButton from "./CustomButton";
-import {
-  Grid,
-  Button,
-  IconButton,
-  Paper,
-  Hidden,
-  Container,
-  useMediaQuery,
-  useTheme,
-  createTheme,
-  Icon,
-  Slide,
-  Fade,
-  TextField,
-} from "@mui/material";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import React from "react";
+import { Grid } from "@mui/material";
 
 const themeColors = {
   homeRed: "rgba(161, 8, 59,1)",
@@ -56,13 +39,13 @@ export const Disclaimer = () => {
         }}
         className="footerP"
       >
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum.
+        All deposits associated with an appointment are non-refundable and
+        non-transferable. The appointment must be canceled prior to the 24 hour
+        cancellation deadline to avoid being charged the remaining amount to
+        total 100% of the service charge. All no call/no shows and appointments
+        canceled within the policy window are subject to being charged. In order
+        to reschedule a new appointment a new non-refundable and
+        non-transferable $25.00 deposit will be due upon booking.
       </p>
       <div
         style={{
@@ -72,7 +55,7 @@ export const Disclaimer = () => {
           backgroundColor: "#fff",
         }}
       ></div>
-      <h3 style={{ marginTop: 24 }}>
+      <h3 style={{ marginTop: 24, color: "#fff" }}>
         ©2022 Home Therapy, LLC. All rights reserved.
       </h3>
     </Grid>

@@ -25,7 +25,7 @@ const AppState = (props) => {
   const [statusbar, setStatusbar] = useState({ offset: 1000, message: null }); //600 will ensure off the screen no matter the device
   const [scrolling, setScrolling] = useState(null);
   const [highlight, setHighlight] = useState({ value: null });
-
+  const [outline, setOutline] = useState({ home: true });
   const initialState = {
     //intial state object has to come before the usereducer or I will keep getting undefined
     currentUser: {}, //signed in user will go here
@@ -67,6 +67,8 @@ const AppState = (props) => {
         largeTablet,
         laptop,
         desktop,
+        outline,
+        setOutline,
       }}
     >
       {props.children}

@@ -69,9 +69,11 @@ const MyCard: React.FC<CardProps> = ({
         style={{ display: "flex", paddingTop: 32, justifyContent: "center" }}
       >
         <MyButton
-          children="Book Now"
-          onClick={() => console.log("clicked")}
+          children="BOOK NOW"
+          onClick={onClick}
           buttonStyle={{ backgroundColor: webColors.homePurple }}
+          hoverEffect={true}
+          backgroundColor={webColors.homePurple}
         />
       </div>
     </div>

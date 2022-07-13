@@ -7,6 +7,7 @@
   background-color: #fff;
   display: flex;
   flex: 1;
+  position: relative;
 
   flex-direction: column;
   color: white;
@@ -20,6 +21,12 @@ p {
 
 h1 {
   font-size: 64px;
+  color: #fff;
+}
+
+.purple-header {
+  font-size: 64px;
+  color: rgba(84, 23, 67, 1);
 }
 
 .footerP {
@@ -28,32 +35,18 @@ h1 {
   margin-left: 8px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.nav-btns {
+  color: rgba(161, 8, 59, 1);
+  font-weight: 600;
+  font-size: 16px;
+}
+.social-icons {
+  cursor: pointer;
+  color: #fff;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.sticky-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
 }

@@ -1,20 +1,5 @@
 import React, { useContext, useState } from "react";
-import MyButton from "./CustomButton";
-import {
-  Grid,
-  Button,
-  IconButton,
-  Paper,
-  Hidden,
-  Container,
-  useMediaQuery,
-  useTheme,
-  createTheme,
-  Icon,
-  Slide,
-  Fade,
-  TextField,
-} from "@mui/material";
+import { Grid } from "@mui/material";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 
@@ -53,11 +38,16 @@ export const Reviews = () => {
   }
   function showReviews() {
     return (
-      <div>
-        <p style={{ textAlign: "center" }}>{reviewArr[currentReview].body}</p>
-        <p style={{ textAlign: "center" }}>
-          -- {reviewArr[currentReview].reviewer}
-        </p>
+      <div style={{ display: "flex", flexDirection: "row" }}>
+        <div style={{ color: themeColors.homePurple, fontSize: 60 }}>"</div>
+
+        <div>
+          <p style={{ textAlign: "center" }}>{reviewArr[currentReview].body}</p>
+          <p style={{ textAlign: "center" }}>
+            -- {reviewArr[currentReview].reviewer}
+          </p>
+        </div>
+        <div style={{ color: themeColors.homePurple, fontSize: 60 }}>"</div>
       </div>
     );
   }
@@ -69,6 +59,8 @@ export const Reviews = () => {
       style={{
         paddingTop: 24,
         paddingBottom: 56,
+        paddingLeft: 80,
+        paddingRight: 80,
         flex: 1,
       }}
       alignItems="space-between"

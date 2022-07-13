@@ -19,6 +19,7 @@ import MyCard from "./CustomCards";
 import purposeImg from "./Photos/purposeImg.jpg";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import EmailIcon from "@mui/icons-material/Email";
+import PhoneIcon from "@mui/icons-material/Phone";
 
 const themeColors = {
   homeRed: "rgba(161, 8, 59,1)",
@@ -28,36 +29,6 @@ const themeColors = {
   homePurple: "rgba(84, 23, 67,1)",
 };
 export const ContactMe = () => {
-  const servicesArr = [
-    {
-      image: purposeImg,
-      title: "Swedish Massage",
-      priceText: "90 minutes - $100",
-    },
-    {
-      image: purposeImg,
-
-      title: "Sports Massage",
-      priceText: "90 minutes - $100",
-    },
-    {
-      image: purposeImg,
-
-      title: "Deep Tissue Massage",
-      priceText: "90 minutes - $100",
-    },
-  ];
-
-  function showServices() {
-    return servicesArr.map((service) => {
-      const { image, title, priceText } = service;
-      return (
-        <Grid item xs={12} md={3}>
-          <MyCard priceText={priceText} image={image} title={title} />
-        </Grid>
-      );
-    });
-  }
   return (
     <Grid
       item
@@ -66,7 +37,8 @@ export const ContactMe = () => {
       style={{
         paddingTop: 24,
         paddingBottom: 56,
-
+        paddingLeft: 80,
+        paddingRight: 80,
         flex: 1,
       }}
       // justifyContent={mediumScreen ? "space-evenly" : "space-evenly"}
@@ -105,7 +77,7 @@ export const ContactMe = () => {
             </Grid>
           </Grid>
           <Grid item xs={2}>
-            <MyButton children="Submit" />
+            <MyButton children="Submit" hoverEffect />
           </Grid>
         </Grid>
       </Grid>
@@ -132,7 +104,7 @@ export const ContactMe = () => {
               className="social-icons"
               alt="instagram profile"
               onClick={() =>
-                window.open("https://www.twitter.com/Smarket_King/")
+                window.open("https://www.instagram.com/h.o.m.etherapy/?hl=en")
               }
             />
             <p className="footerP">@h.o.m.etherapy</p>
@@ -142,14 +114,16 @@ export const ContactMe = () => {
             xs={12}
             style={{ display: "flex", alignItems: "center", marginTop: 8 }}
           >
-            <EmailIcon
-              className="social-icons"
-              alt="email profile"
-              onClick={() =>
-                window.open("https://www.twitter.com/Smarket_King/")
-              }
-            />
+            <EmailIcon className="social-icons" alt="email profile" />
             <p className="footerP">homestudiotherapy@gmail.com</p>
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            style={{ display: "flex", alignItems: "center", marginTop: 8 }}
+          >
+            <PhoneIcon className="social-icons" alt="phone number" />
+            <p className="footerP">816-692-2747</p>
           </Grid>
         </Grid>
         <Grid item container xs={12}></Grid>

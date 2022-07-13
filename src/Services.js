@@ -1,45 +1,28 @@
-import React, { useContext } from "react";
-import MyButton from "./CustomButton";
-import {
-  Grid,
-  Button,
-  IconButton,
-  Paper,
-  Hidden,
-  Container,
-  useMediaQuery,
-  useTheme,
-  createTheme,
-  Icon,
-  Slide,
-  Fade,
-} from "@mui/material";
+import React from "react";
+import { Grid } from "@mui/material";
 import MyCard from "./CustomCards";
-import purposeImg from "./Photos/purposeImg.jpg";
+import SportThumbnail from "./WebPhotos/SportThumbnail.png";
+import SwedishThumbnail from "./WebPhotos/SwedishThumbnail.png";
+import DeepTissueThumbnail from "./WebPhotos/DeepTissueThumbnail.png";
 
-const themeColors = {
-  homeRed: "rgba(161, 8, 59,1)",
-  homeDarkOrange: "rgba(247, 188, 0,1)",
-  homeLightOrange: "rgba(249, 147, 1,1)",
-  homeYellowOrange: "rgba(247, 188, 0,1)",
-  homePurple: "rgba(84, 23, 67,1)",
-};
 export const Services = () => {
+  function bookMassage() {
+    window.open("https://pocketsuite.io/book/keke-jones");
+  }
   const servicesArr = [
     {
-      image: purposeImg,
-      title: "Swedish Massage",
+      image: SwedishThumbnail,
+      title: "Relaxation Massage",
       priceText: "90 minutes - $100",
     },
     {
-      image: purposeImg,
+      image: SportThumbnail,
 
       title: "Sports Massage",
       priceText: "90 minutes - $100",
     },
     {
-      image: purposeImg,
-
+      image: DeepTissueThumbnail,
       title: "Deep Tissue Massage",
       priceText: "90 minutes - $100",
     },
@@ -49,8 +32,13 @@ export const Services = () => {
     return servicesArr.map((service) => {
       const { image, title, priceText } = service;
       return (
-        <Grid item xs={12} md={3}>
-          <MyCard priceText={priceText} image={image} title={title} />
+        <Grid item container xs={12} md={3}>
+          <MyCard
+            priceText={priceText}
+            image={image}
+            title={title}
+            onClick={bookMassage}
+          />
         </Grid>
       );
     });
@@ -69,15 +57,15 @@ export const Services = () => {
       // justifyContent={mediumScreen ? "space-evenly" : "space-evenly"}
     >
       <Grid item xs={12}>
-        <h1 style={{ textAlign: "center" }}>Our Services</h1>
+        <h1 style={{ textAlign: "center" }}>Services</h1>
       </Grid>
       <Grid
         item
         container
         xs={12}
         spacing={4}
-        justifyContent="center"
-        style={{ paddingTop: 24 }}
+        justifyContent="space-evenly"
+        style={{ paddingTop: 24, paddingLeft: 80, paddingRight: 80 }}
       >
         {showServices()}
       </Grid>

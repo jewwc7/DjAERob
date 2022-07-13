@@ -1,10 +1,7 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 
 import "./App.css";
 import MyButton from "./CustomButton";
-import TopNav from "./TopNav";
-import hero from "./Photos/hero.jpg";
-import purposeImg from "./Photos/purposeImg.jpg";
 
 import {
   Grid,
@@ -22,14 +19,21 @@ import {
 } from "@mui/material";
 import AppContext from "./context/appContext";
 import AppState from "./context/AppState";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Services from "./Services";
 import { mainColors } from "./themecolors";
 import ContactMe from "./ContactMe";
 import Reviews from "./Reviews";
 import Disclaimer from "./Disclaimer";
 import ServicesPage from "./Servicespage";
+import DehazeIcon from "@material-ui/icons/Dehaze";
+import TopNav from "./TopNav";
+import heroImage from "./WebPhotos/HeaderImage.png";
+import purposeImg from "./WebPhotos/OurPurpose.png";
+import missionImg from "./WebPhotos/OurMission.png";
+import Keala from "./Photography/Keala.jpg";
 
+const Section_Margin_TOP = 64;
 function AppWrapper() {
   return (
     <AppState>
@@ -42,7 +46,17 @@ function AppWrapper() {
 
 function App() {
   return (
-    <div className="App">
+    <Routes>
+      <Route path="/" element={<HomeScreen />}></Route>
+      <Route path="/services" element={<ServicesPage />}></Route>
+    </Routes>
+  );
+}
+
+const HomeScreen = () => {
+  return (
+    <Grid style={{ flex: 1, position: "relative" }}>
+      <TopNav />
       <div style={{ height: 500 }}>
         <Hero />
       </div>
@@ -58,7 +72,7 @@ function App() {
           style={{
             flex: 1,
             backgroundColor: mainColors.homeRed,
-            marginTop: 32,
+            marginTop: Section_Margin_TOP,
           }}
         >
           <Services />
@@ -67,6 +81,8 @@ function App() {
           style={{
             flex: 1,
             marginTop: 32,
+            paddingLeft: 80,
+            paddingRight: 80,
           }}
         >
           <MeetKEKE />
@@ -75,9 +91,7 @@ function App() {
           style={{
             flex: 1,
             backgroundColor: mainColors.homeRed,
-            marginTop: 32,
-            paddingLeft: 80,
-            paddingRight: 80,
+            marginTop: Section_Margin_TOP,
           }}
         >
           <ContactMe />
@@ -85,9 +99,7 @@ function App() {
         <div
           style={{
             flex: 1,
-            marginTop: 32,
-            paddingLeft: 80,
-            paddingRight: 80,
+            marginTop: Section_Margin_TOP,
           }}
         >
           <Reviews />
@@ -99,34 +111,30 @@ function App() {
         >
           <Disclaimer />
         </div>
-        <div
-          style={{
-            flex: 1,
-            marginTop: 60,
-          }}
-        >
-          <ServicesPage />
-        </div>
       </div>
-    </div>
+    </Grid>
   );
-}
-
+};
 const Hero = () => {
   // const appContext = useContext(AppContext);
   //  const { lineHeight, afterHeaderMargin, smallScreen } = appContext;
+
+  function bookMassage() {
+    window.open("https://pocketsuite.io/book/keke-jones");
+  }
   return (
     <Grid
       item
       container
       xs={12}
       style={{
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${hero})`,
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, 0.7)), url(${heroImage})`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover", //100% looks good on desktop, make tenary if want to change
         height: "100%",
         width: "100%",
         position: "relative",
+        //  filter: "grayscale(100%)",
       }}
       justify="center"
       alignItems="center"
@@ -167,10 +175,7 @@ const Hero = () => {
             A better mind, body and spirit - One day at a time
           </p>
           <div style={{ marginTop: 32 }}>
-            <MyButton
-              children="Book Now"
-              onClick={() => console.log("clicked")}
-            />
+            <MyButton children="BOOK NOW" onClick={bookMassage} hoverEffect />
           </div>
         </Grid>
       </Grid>
@@ -195,7 +200,7 @@ const PurposeAndMission = () => {
       container
       xs={12}
       style={{
-        marginTop: 24,
+        paddingTop: 24,
         flex: 1,
       }}
       // justifyContent={mediumScreen ? "space-evenly" : "space-evenly"}
@@ -206,8 +211,8 @@ const PurposeAndMission = () => {
         container
         xs={12}
         justifyContent={mediumScreen ? "space-evenly" : "space-evenly"}
-        alignItems="center"
-        style={{ height: "40%" }}
+        // alignItems="flex-start"
+        style={{ height: "40%", paddingTop: 24 }}
       >
         <Grid item xs={12} md={5} style={{ height: "100%" }}>
           <img
@@ -221,16 +226,9 @@ const PurposeAndMission = () => {
             }}
           />
         </Grid>
-        <Grid item container xs={12} md={5} style={{}}>
+        <Grid item container xs={12} md={5} justifyContent={"flex-start"}>
           <Grid item container>
-            <h1
-              style={{
-                color: "#151515",
-                lineHeight: 1.2,
-              }}
-            >
-              Our Purpose
-            </h1>
+            <h1 className="purple-header ">Purpose</h1>
             <p
               style={{
                 color: "#151515",
@@ -254,20 +252,12 @@ const PurposeAndMission = () => {
         container
         xs={12}
         justifyContent={mediumScreen ? "space-evenly" : "space-evenly"}
-        alignItems="flex-end"
+        alignItems="flex-start"
         style={{ height: "40%", marginTop: 60 }}
       >
         <Grid item container xs={12} md={5} style={{}}>
           <Grid item container>
-            <h1
-              style={{
-                color: "#151515",
-                lineHeight: 1.2,
-                textAlign: "left",
-              }}
-            >
-              Our Mission
-            </h1>
+            <h1 className="purple-header ">Mission</h1>
             <p
               style={{
                 color: "#151515",
@@ -275,17 +265,15 @@ const PurposeAndMission = () => {
                 width: "80%",
               }}
             >
-              The "Home" is a physical and mental space not just where you
-              reside physically, but mentally as well. In these spaces - one
-              looks for peace, love, serenity and security. A secure place to be
-              open and received. With H.O.M.E Therapy you will be treated with
-              the utmost respect and attention.
+              Fostering an environment that stimulates one's mental, physical
+              and spiritual growth and overall well-being through the healing
+              property of touch.
             </p>
           </Grid>
         </Grid>
         <Grid item xs={12} md={5} style={{ height: "100%" }}>
           <img
-            src={purposeImg}
+            src={missionImg}
             // className="dualpics"
             alt="massage"
             style={{
@@ -308,21 +296,14 @@ const MeetKEKE = () => {
         container
         xs={12}
         md={6}
-        alignItems="center"
+        alignItems="flex-start"
         justifyContent={"center"}
       >
-        <img src={purposeImg} alt="owner" height="400" width="400" />
+        <img src={Keala} alt="owner" height="400" width="400" />
       </Grid>
       <Grid item container xs={12} md={6} style={{}}>
         <Grid item container>
-          <h1
-            style={{
-              color: "#151515",
-              lineHeight: 1.2,
-            }}
-          >
-            Meet Keke
-          </h1>
+          <h1 className="purple-header">Meet Keke</h1>
           <p
             style={{
               color: "#151515",
@@ -330,16 +311,20 @@ const MeetKEKE = () => {
               width: "80%",
             }}
           >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur.
+            As a former collegiate athlete and having a love for the human body
+            as a whole - KeKe received a Bachelors of Science in Exercise
+            Science from the University of Tampa in 2015. In time, realizing and
+            fostering her ability to nurture in conjunction with her natural
+            passion of helping others - She became a Licensed Massage Therapist
+            on December 12th, 2020. She combines the best techniques including
+            Relaxation and Deep Tissue massage to create a comforting and
+            therapeutic treatment that is unique and customized for each
+            person's own individual healing experience.
           </p>
         </Grid>
       </Grid>
     </Grid>
   );
 };
+
 export default AppWrapper;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 interface Props {
   border: string;
@@ -14,8 +14,11 @@ interface Props {
 interface ButtonProps {
   onClick: () => void;
   children?: React.ReactNode;
-  buttonStyle?: Object;
+  buttonStyle?: object;
   textStyle?: Object;
+  hoverEffect?: Boolean | false;
+  raised?: Boolean | undefined;
+  backgroundColor?: string; //used for hover effect,
 }
 
 const MyButton: React.FC<ButtonProps> = ({
@@ -23,7 +26,30 @@ const MyButton: React.FC<ButtonProps> = ({
   children,
   buttonStyle,
   textStyle,
+  raised,
+  hoverEffect,
+  backgroundColor,
 }) => {
+  const raisedObj = raised ? dropShadow : {};
+  const [hovered, setHovered] = useState({});
+  const [textHoveredColor, setTextHoveredColor] = useState({});
+  function buttonIsHovered() {
+    if (!hoverEffect) return;
+    setHovered({
+      backgroundColor: "white",
+      border: `2px solid ${
+        backgroundColor || defaultButtonStyle.backgroundColor
+      }`,
+    });
+    setTextHoveredColor({
+      color: backgroundColor || defaultButtonStyle.backgroundColor,
+    });
+  }
+
+  function buttonIsNotHovered() {
+    setHovered({});
+    setTextHoveredColor({});
+  }
   return (
     <button
       onClick={onClick}
@@ -31,12 +57,17 @@ const MyButton: React.FC<ButtonProps> = ({
         flexDirection: "row",
         ...defaultButtonStyle,
         ...buttonStyle,
+        ...raisedObj,
+        ...hovered,
       }}
+      onMouseOver={buttonIsHovered}
+      onMouseOut={buttonIsNotHovered}
     >
       <p
         style={{
           ...defaultButtonTextStyle,
           ...textStyle,
+          ...textHoveredColor,
         }}
       >
         {children}
@@ -45,6 +76,9 @@ const MyButton: React.FC<ButtonProps> = ({
   );
 };
 
+const dropShadow = {
+  boxShadow: "1px 10px 13px -3px rgba(0,0,0,0.26)",
+};
 const buttonColors = {
   homeRed: "rgba(161, 8, 59,1)",
   homeDarkOrange: "rgba(247, 188, 0,1)",
@@ -58,11 +92,10 @@ const defaultButtonStyle = {
   border: "none",
   borderRadius: "none",
   height: 50,
-  width: 140,
+  width: 156,
   padding: 16,
   justifyContent: "center",
   alignItems: "center",
-  boxShadow: "1px 10px 13px -3px rgba(0,0,0,0.26)",
   cursor: "pointer",
 };
 
