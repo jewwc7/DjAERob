@@ -116,6 +116,7 @@ const TopNav = ({ mobile, tablet, desktop, laptop }) => {
     <Grid
       item
       container
+      justifyContent={"space-between"}
       style={{
         height: 80,
         alignItems: "center",
@@ -129,7 +130,6 @@ const TopNav = ({ mobile, tablet, desktop, laptop }) => {
       <Grid
         item
         container
-        // justifyContent={smallScreen ? "space-between" : "center"}
         alignItems="center"
         direction={"row"}
         style={{
@@ -138,8 +138,8 @@ const TopNav = ({ mobile, tablet, desktop, laptop }) => {
           cursor: "pointer",
           // backgroundColor: "blue",
         }}
-        xs={12}
-        md={6}
+        xs={6}
+        md={4}
         onClick={() => {
           navigate(`/`);
           setTimeout(() => {
@@ -156,24 +156,22 @@ const TopNav = ({ mobile, tablet, desktop, laptop }) => {
           style={{ height: "100%", width: "100%" }}
         ></img>
       </Grid>
-      <Hidden mdDown>
-        <Grid
-          item
-          style={{
-            paddingRight: "5%",
-            justifyContent: "flex-end",
-            display: "flex",
-          }}
-          xs={6}
-        >
-          <Hidden smDown>{displayNavBtns()}</Hidden>
-          <Hidden mdUp>
-            <IconButton>
-              <DehazeIcon />
-            </IconButton>
-          </Hidden>
-        </Grid>
-      </Hidden>
+      <Grid
+        item
+        style={{
+          paddingRight: "5%",
+          justifyContent: "flex-end",
+          display: "flex",
+        }}
+        xs={6}
+      >
+        <Hidden mdDown>{displayNavBtns()}</Hidden>
+        <Hidden mdUp>
+          <IconButton>
+            <DehazeIcon />
+          </IconButton>
+        </Hidden>
+      </Grid>
     </Grid>
   );
 };
