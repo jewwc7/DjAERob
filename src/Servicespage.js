@@ -7,6 +7,7 @@ import TopNav from "./TopNav";
 import SwedishHeader from "./WebPhotos/SwedishHeader.png";
 import SportSportHeader from "./WebPhotos/SportSportHeader.png";
 import DeepTissueHeader from "./WebPhotos/DeepTissueHeader.png";
+import AppContext from "./context/appContext";
 
 const themeColors = {
   homeRed: "rgba(161, 8, 59,1)",
@@ -18,6 +19,9 @@ const themeColors = {
 const Section_Margin_TOP = 64;
 
 export const ServicesPage = () => {
+  const appContext = useContext(AppContext);
+
+  const { tablet, mobile } = appContext;
   const servicesArr = [
     {
       image: SwedishHeader,
@@ -74,14 +78,36 @@ export const ServicesPage = () => {
           <Grid item style={{ paddingLeft: 80, paddingRight: 80 }}>
             <h1 style={{ color: themeColors.homePurple }}>{title}</h1>
             <div style={{ marginTop: 24 }}>
-              <h3 style={{ color: themeColors.homeYellowOrange }}>Purpose</h3>
-              <p>{purpose}</p>
+              <h3
+                style={{
+                  color: themeColors.homeYellowOrange,
+                  textAlign: mobile ? "center" : "left",
+                }}
+              >
+                Purpose
+              </h3>
+              <p style={{ textAlign: mobile ? "center" : "left" }}>{purpose}</p>
             </div>
             <div style={{ marginTop: 32 }}>
-              <h3 style={{ color: themeColors.homeYellowOrange }}>Benefits</h3>
-              <p>{benefits}</p>
+              <h3
+                style={{
+                  color: themeColors.homeYellowOrange,
+                  textAlign: mobile ? "center" : "left",
+                }}
+              >
+                Benefits
+              </h3>
+              <p style={{ textAlign: mobile ? "center" : "left" }}>
+                {benefits}
+              </p>
             </div>
-            <div style={{ marginTop: 48 }}>
+            <div
+              style={{
+                marginTop: 48,
+                display: "flex",
+                justifyContent: mobile ? "center" : null,
+              }}
+            >
               <MyButton
                 children="BOOK NOW"
                 buttonStyle={{ backgroundColor: themeColors.homePurple }}
@@ -97,16 +123,17 @@ export const ServicesPage = () => {
   }
   return (
     <Grid
-      item
       container
       xs={12}
       style={{
         flex: 1,
+        position: "relative",
+        width: "100%",
       }}
       // justifyContent={mediumScreen ? "space-evenly" : "space-evenly"}
     >
       <TopNav />
-      <Grid item container xs={12} justifyContent="center">
+      <Grid item container xs={12} justifyContent={mobile ? null : "center"}>
         <Grid item xs={12} md={6} xl={3}>
           <div
             style={{

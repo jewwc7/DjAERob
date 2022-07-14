@@ -3,20 +3,7 @@ import React, { useContext, useState } from "react";
 import "./App.css";
 import MyButton from "./CustomButton";
 
-import {
-  Grid,
-  Button,
-  IconButton,
-  Paper,
-  Hidden,
-  Container,
-  useMediaQuery,
-  useTheme,
-  createTheme,
-  Icon,
-  Slide,
-  Fade,
-} from "@mui/material";
+import { Grid } from "@mui/material";
 import AppContext from "./context/appContext";
 import AppState from "./context/AppState";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -184,8 +171,7 @@ const Hero = () => {
 
 const PurposeAndMission = () => {
   const appContext = useContext(AppContext);
-  const { lineHeight, afterHeaderMargin, tablet, mobile, horizonalPadding, e } =
-    appContext;
+  const { mobile } = appContext;
   return (
     <Grid
       item
