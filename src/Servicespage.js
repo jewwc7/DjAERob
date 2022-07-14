@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import MyButton from "./CustomButton";
-import hero from "./Photos/hero.jpg";
 
 import { Grid } from "@mui/material";
 import Disclaimer from "./Disclaimer";
