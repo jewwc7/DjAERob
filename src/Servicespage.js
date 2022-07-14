@@ -107,7 +107,7 @@ export const ServicesPage = () => {
     >
       <TopNav />
       <Grid item container xs={12} justifyContent="center">
-        <Grid item xs={10} md={6} xl={3}>
+        <Grid item xs={12} md={6} xl={3}>
           <div
             style={{
               borderWidth: 2,

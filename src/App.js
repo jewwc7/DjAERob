@@ -184,15 +184,8 @@ const Hero = () => {
 
 const PurposeAndMission = () => {
   const appContext = useContext(AppContext);
-  const {
-    lineHeight,
-    afterHeaderMargin,
-    smallScreen,
-    mediumScreen,
-    largeScreen,
-    horizonalPadding,
-    e,
-  } = appContext;
+  const { lineHeight, afterHeaderMargin, tablet, mobile, horizonalPadding, e } =
+    appContext;
   return (
     <Grid
       item
@@ -209,8 +202,8 @@ const PurposeAndMission = () => {
         item
         container
         xs={12}
-        justifyContent={mediumScreen ? "space-evenly" : "space-evenly"}
-        // alignItems="flex-start"
+        alignItems="flex-start"
+        justifyContent={"space-evenly"}
         style={{ height: "40%", paddingTop: 24 }}
       >
         <Grid item xs={12} md={5} style={{ height: "100%" }}>
@@ -227,12 +220,13 @@ const PurposeAndMission = () => {
         </Grid>
         <Grid item container xs={12} md={5} justifyContent={"flex-start"}>
           <Grid item container>
-            <h1 className="purple-header ">Purpose</h1>
+            <h1 className="purple-header">Purpose</h1>
             <p
               style={{
                 color: "#151515",
                 marginTop: 4,
-                width: "80%",
+                width: mobile ? "100%" : "80%",
+                textAlign: mobile ? "center" : "left",
               }}
             >
               The "Home" is a physical and mental space not just where you
@@ -250,7 +244,7 @@ const PurposeAndMission = () => {
         item
         container
         xs={12}
-        justifyContent={mediumScreen ? "space-evenly" : "space-evenly"}
+        justifyContent={"space-evenly"}
         alignItems="flex-start"
         style={{ height: "40%", marginTop: 60 }}
       >
@@ -261,7 +255,8 @@ const PurposeAndMission = () => {
               style={{
                 color: "#151515",
                 marginTop: 4,
-                width: "80%",
+                width: mobile ? "100%" : "80%",
+                textAlign: mobile ? "center" : "left",
               }}
             >
               Fostering an environment that stimulates one's mental, physical
@@ -288,6 +283,8 @@ const PurposeAndMission = () => {
 };
 
 const MeetKEKE = () => {
+  const appContext = useContext(AppContext);
+  const { tablet, mobile } = appContext;
   return (
     <Grid item container style={{ paddingTop: 32, paddingBottom: 32 }}>
       <Grid
@@ -302,12 +299,18 @@ const MeetKEKE = () => {
       </Grid>
       <Grid item container xs={12} md={6} style={{}}>
         <Grid item container>
-          <h1 className="purple-header">Meet Keke</h1>
+          <h1
+            className="purple-header"
+            style={{ textAlign: mobile ? "center" : "left" }}
+          >
+            Meet Keke
+          </h1>
           <p
             style={{
               color: "#151515",
               marginTop: 4,
-              width: "80%",
+              width: mobile ? "100%" : "80%",
+              textAlign: mobile ? "center" : "left",
             }}
           >
             As a former collegiate athlete and having a love for the human body

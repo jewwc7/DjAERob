@@ -2,7 +2,7 @@ import React, { useState, useReducer, useEffect } from "react";
 import AppContext from "./appContext";
 import data from "./data";
 
-import { useMediaQuery, useTheme } from "@mui/material";
+import { useMediaQuery, createTheme } from "@mui/material";
 
 //State File. Import context File and Return ContextFile.Provider
 //in value attribute pass any data you want to be accessed
@@ -14,7 +14,17 @@ import { useMediaQuery, useTheme } from "@mui/material";
 const AppState = (props) => {
   const { massageArr, massageTypes } = data;
 
-  const theme = useTheme();
+  const theme = createTheme({
+    breakpoints: {
+      values: {
+        mobile: 0,
+        tablet: 640,
+        largeTablet: 840, //haldSCreen too
+        laptop: 1024,
+        desktop: 1200,
+      },
+    },
+  });
   const mobile = useMediaQuery(theme.breakpoints.down("tablet"), {}); //xs, sm
   const tablet = useMediaQuery(theme.breakpoints.down("largeTablet"), {}); //md
   const largeTablet = useMediaQuery(theme.breakpoints.down("laptop"), {}); //md
