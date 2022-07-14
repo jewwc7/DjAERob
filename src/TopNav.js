@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 //import Modal from "./Modal";
 import { Grid, Button, IconButton, Paper, Hidden } from "@mui/material";
 //import { makeStyles } from "@mui/material/styles";
-import DehazeIcon from "@material-ui/icons/Dehaze";
+import DehazeIcon from "@mui/icons-material/Dehaze";
 import {
   BrowserRouter as Router,
   Switch,
@@ -168,7 +168,9 @@ const TopNav = ({ mobile, tablet, desktop, laptop }) => {
         >
           <Hidden smDown>{displayNavBtns()}</Hidden>
           <Hidden mdUp>
-            <IconButton>DehazeIcon</IconButton>
+            <IconButton>
+              <DehazeIcon />
+            </IconButton>
           </Hidden>
         </Grid>
       </Hidden>
