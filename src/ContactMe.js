@@ -1,4 +1,6 @@
 import React, { useContext } from "react";
+import AppContext from "./context/appContext";
+
 import MyButton from "./CustomButton";
 import {
   Grid,
@@ -29,6 +31,8 @@ const themeColors = {
   homePurple: "rgba(84, 23, 67,1)",
 };
 export const ContactMe = () => {
+  const appContext = useContext(AppContext);
+  const { horizontalPadding } = appContext;
   return (
     <Grid
       item
@@ -37,8 +41,8 @@ export const ContactMe = () => {
       style={{
         paddingTop: 24,
         paddingBottom: 56,
-        paddingLeft: 80,
-        paddingRight: 80,
+        paddingLeft: horizontalPadding,
+        paddingRight: horizontalPadding,
         flex: 1,
       }}
       // justifyContent={mediumScreen ? "space-evenly" : "space-evenly"}
