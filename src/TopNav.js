@@ -101,7 +101,7 @@ const TopNav = ({ mobile, tablet, desktop, laptop }) => {
         <MyButton
           children={title}
           hoverEffect
-          backgroundColor="magenta"
+          backgroundColor={themeColors.homePurple}
           buttonStyle={{
             backgroundColor: "rgba(255,255,255,0)",
             border:

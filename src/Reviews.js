@@ -43,7 +43,15 @@ export const Reviews = () => {
   function showReviews() {
     return (
       <div style={{ display: "flex", flexDirection: "row" }}>
-        <div style={{ color: themeColors.homePurple, fontSize: 60 }}>"</div>
+        <div
+          style={{
+            color: themeColors.homePurple,
+            fontSize: 60,
+            fontFamily: "ReinaNeue-Heavy",
+          }}
+        >
+          "
+        </div>
 
         <div>
           <p style={{ textAlign: "center" }}>{reviewArr[currentReview].body}</p>
@@ -51,7 +59,15 @@ export const Reviews = () => {
             -- {reviewArr[currentReview].reviewer}
           </p>
         </div>
-        <div style={{ color: themeColors.homePurple, fontSize: 60 }}>"</div>
+        <div
+          style={{
+            color: themeColors.homePurple,
+            fontSize: 60,
+            fontFamily: "ReinaNeue-Heavy",
+          }}
+        >
+          "
+        </div>
       </div>
     );
   }
@@ -70,7 +86,7 @@ export const Reviews = () => {
       alignItems="space-between"
     >
       <Grid item container xs={3} alignItems="center">
-        <Grid item xs={12} container ustifyContent="flex-start">
+        <Grid item xs={12} container justifyContent="flex-start">
           <ArrowBackIosNewIcon
             sx={{ color: themeColors.homeRed, fontSize: 40, cursor: "pointer" }}
             onClick={goBack}

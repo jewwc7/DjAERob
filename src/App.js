@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 
 import "./App.css";
 import MyButton from "./CustomButton";
-
+import "./MyFontsWebfontsKit.css";
 import { Grid } from "@mui/material";
 import AppContext from "./context/appContext";
 import AppState from "./context/AppState";
@@ -124,7 +124,7 @@ const Hero = () => {
       style={{
         backgroundImage: `linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, 0.7)), url(${heroImage})`,
         backgroundRepeat: "no-repeat",
-        // backgroundSize: "cover", //100% looks good on desktop, make tenary if want to change
+        backgroundSize: "cover", //100% looks good on desktop, make tenary if want to change
         height: "100%",
         width: "100%",
         position: "relative",
