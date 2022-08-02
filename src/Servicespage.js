@@ -145,7 +145,7 @@ export const ServicesPage = () => {
           item
           xs={12}
           md={6}
-          xl={3}
+          xl={6}
           style={{
             paddingLeft: horizontalPadding,
             paddingRight: horizontalPadding,
