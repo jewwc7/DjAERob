@@ -30,6 +30,7 @@ const AppState = (props) => {
   const largeTablet = useMediaQuery(theme.breakpoints.down("laptop"), {}); //md
   const laptop = useMediaQuery(theme.breakpoints.down("desktop"), {}); //large
   const desktop = useMediaQuery(theme.breakpoints.up("desktop"), {}); //xl
+  const horizontalPadding = mobile ? 20 : 80;
 
   const [modalVisible, setModalVisible] = useState(false);
   const [statusbar, setStatusbar] = useState({ offset: 1000, message: null }); //600 will ensure off the screen no matter the device
@@ -79,6 +80,7 @@ const AppState = (props) => {
         desktop,
         outline,
         setOutline,
+        horizontalPadding,
       }}
     >
       {props.children}

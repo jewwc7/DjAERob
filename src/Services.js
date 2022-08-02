@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import AppContext from "./context/appContext";
 import { Grid } from "@mui/material";
 import MyCard from "./CustomCards";
 import SportThumbnail from "./WebPhotos/SportThumbnail.png";
@@ -6,6 +7,8 @@ import SwedishThumbnail from "./WebPhotos/SwedishThumbnail.png";
 import DeepTissueThumbnail from "./WebPhotos/DeepTissueThumbnail.png";
 
 export const Services = () => {
+  const appContext = useContext(AppContext);
+  const { horizontalPadding } = appContext;
   function bookMassage() {
     window.open("https://pocketsuite.io/book/keke-jones");
   }
@@ -64,8 +67,12 @@ export const Services = () => {
         container
         xs={12}
         spacing={4}
-        justifyContent="space-evenly"
-        style={{ paddingTop: 24, paddingLeft: 80, paddingRight: 80 }}
+        justifyContent={"space-between"}
+        style={{
+          paddingTop: 24,
+          paddingLeft: horizontalPadding,
+          paddingRight: horizontalPadding,
+        }}
       >
         {showServices()}
       </Grid>

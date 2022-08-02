@@ -10,6 +10,7 @@ import {
   useNavigate,
 } from "react-router-dom";
 import AppContext from "./context/appContext";
+import Modal from "./Modal";
 import MyButton from "./CustomButton";
 import logo from "./Photography/HTherapylogo.png";
 const themeColors = {
@@ -22,7 +23,13 @@ const themeColors = {
 const TopNav = ({ mobile, tablet, desktop, laptop }) => {
   const [stickyClass, setStickyClass] = useState("");
   const appContext = useContext(AppContext);
-  const { setOutline, outline } = appContext;
+  const {
+    setOutline,
+    outline,
+    modalVisible,
+    setModalVisible,
+    horizontalPadding,
+  } = appContext;
   useEffect(() => {
     window.addEventListener("scroll", stickNavbar);
     return () => window.removeEventListener("scroll", stickNavbar);
@@ -51,22 +58,25 @@ const TopNav = ({ mobile, tablet, desktop, laptop }) => {
       title: "Home",
       sectionPostion: 0,
       isScroll: true,
+      specialHighlight: themeColors.homePurple,
     },
     {
       title: "Services",
       sectionPostion: 0,
       page: "services",
-      specialHighlight: "pink",
+      specialHighlight: themeColors.homePurple,
     },
     {
       title: "Therapist",
       sectionPostion: 1800,
       isScroll: true,
+      specialHighlight: themeColors.homePurple,
     },
     {
       title: "Connect",
       sectionPostion: 2400, //document.body.scrollHeight, //this is how you scroll to bottom of page, used timeout so the new pages coordinates can be used(w/o timeout will scroll as far as prior page went down)
       isScroll: true,
+      specialHighlight: themeColors.homePurple,
     },
   ];
 
@@ -90,6 +100,8 @@ const TopNav = ({ mobile, tablet, desktop, laptop }) => {
       return (
         <MyButton
           children={title}
+          hoverEffect
+          backgroundColor="magenta"
           buttonStyle={{
             backgroundColor: "rgba(255,255,255,0)",
             border:
@@ -121,8 +133,8 @@ const TopNav = ({ mobile, tablet, desktop, laptop }) => {
         height: 80,
         alignItems: "center",
         backgroundColor: "#fff",
-        paddingLeft: 8,
-        paddingRight: 8,
+        paddingLeft: horizontalPadding,
+        paddingRight: horizontalPadding,
         zIndex: 100,
       }}
       className={`${stickyClass}`}
@@ -159,19 +171,19 @@ const TopNav = ({ mobile, tablet, desktop, laptop }) => {
       <Grid
         item
         style={{
-          paddingRight: "5%",
-          justifyContent: "flex-end",
           display: "flex",
+          justifyContent: "flex-end",
         }}
         xs={6}
       >
         <Hidden mdDown>{displayNavBtns()}</Hidden>
         <Hidden mdUp>
           <IconButton>
-            <DehazeIcon />
+            <DehazeIcon onClick={() => setModalVisible(!modalVisible)} />
           </IconButton>
         </Hidden>
       </Grid>
+      <Modal />
     </Grid>
   );
 };

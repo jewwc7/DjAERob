@@ -21,7 +21,7 @@ const Section_Margin_TOP = 64;
 export const ServicesPage = () => {
   const appContext = useContext(AppContext);
 
-  const { tablet, mobile } = appContext;
+  const { tablet, mobile, horizontalPadding } = appContext;
   const servicesArr = [
     {
       image: SwedishHeader,
@@ -71,11 +71,18 @@ export const ServicesPage = () => {
             <img
               src={image}
               alt="massage service"
-              height={240}
+              height="auto"
               width="100%"
             ></img>
           </Grid>
-          <Grid item style={{ paddingLeft: 80, paddingRight: 80 }}>
+          <Grid
+            item
+            style={{
+              paddingLeft: horizontalPadding,
+              paddingRight: horizontalPadding,
+              marginTop: 32,
+            }}
+          >
             <h1 style={{ color: themeColors.homePurple }}>{title}</h1>
             <div style={{ marginTop: 24 }}>
               <h3
@@ -134,7 +141,17 @@ export const ServicesPage = () => {
     >
       <TopNav />
       <Grid item container xs={12} justifyContent={mobile ? null : "center"}>
-        <Grid item xs={12} md={6} xl={3}>
+        <Grid
+          item
+          xs={12}
+          md={6}
+          xl={3}
+          style={{
+            paddingLeft: horizontalPadding,
+            paddingRight: horizontalPadding,
+            marginTop: 32,
+          }}
+        >
           <div
             style={{
               borderWidth: 2,

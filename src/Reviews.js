@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import AppContext from "./context/appContext";
 import { Grid } from "@mui/material";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
@@ -11,6 +12,9 @@ const themeColors = {
   homePurple: "rgba(84, 23, 67,1)",
 };
 export const Reviews = () => {
+  const appContext = useContext(AppContext);
+  const { horizontalPadding } = appContext;
+
   const reviewArr = [
     {
       reviewer: "Johnny",
@@ -59,8 +63,8 @@ export const Reviews = () => {
       style={{
         paddingTop: 24,
         paddingBottom: 56,
-        paddingLeft: 80,
-        paddingRight: 80,
+        paddingLeft: horizontalPadding,
+        paddingRight: horizontalPadding,
         flex: 1,
       }}
       alignItems="space-between"

@@ -40,6 +40,8 @@ function App() {
 }
 
 const HomeScreen = () => {
+  const appContext = useContext(AppContext);
+  const { mobile, horizontalPadding } = appContext;
   return (
     <Grid style={{ flex: 1, position: "relative" }}>
       <TopNav />
@@ -51,7 +53,13 @@ const HomeScreen = () => {
           flex: 1,
         }}
       >
-        <div style={{ flex: 1, paddingLeft: 80, paddingRight: 80 }}>
+        <div
+          style={{
+            flex: 1,
+            paddingLeft: horizontalPadding,
+            paddingRight: horizontalPadding,
+          }}
+        >
           <PurposeAndMission />
         </div>
         <div
@@ -67,8 +75,8 @@ const HomeScreen = () => {
           style={{
             flex: 1,
             marginTop: 32,
-            paddingLeft: 80,
-            paddingRight: 80,
+            paddingLeft: horizontalPadding,
+            paddingRight: horizontalPadding,
           }}
         >
           <MeetKEKE />
@@ -116,7 +124,7 @@ const Hero = () => {
       style={{
         backgroundImage: `linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, 0.7)), url(${heroImage})`,
         backgroundRepeat: "no-repeat",
-        backgroundSize: "cover", //100% looks good on desktop, make tenary if want to change
+        // backgroundSize: "cover", //100% looks good on desktop, make tenary if want to change
         height: "100%",
         width: "100%",
         position: "relative",
@@ -189,7 +197,7 @@ const PurposeAndMission = () => {
         container
         xs={12}
         alignItems="flex-start"
-        justifyContent={"space-evenly"}
+        justifyContent={"space-between"}
         style={{ height: "40%", paddingTop: 24 }}
       >
         <Grid item xs={12} md={5} style={{ height: "100%" }}>
@@ -206,7 +214,12 @@ const PurposeAndMission = () => {
         </Grid>
         <Grid item container xs={12} md={5} justifyContent={"flex-start"}>
           <Grid item container>
-            <h1 className="purple-header">Purpose</h1>
+            <h1
+              className="purple-header"
+              style={{ textAlign: mobile ? "center" : "left" }}
+            >
+              Purpose
+            </h1>
             <p
               style={{
                 color: "#151515",
@@ -230,13 +243,18 @@ const PurposeAndMission = () => {
         item
         container
         xs={12}
-        justifyContent={"space-evenly"}
+        justifyContent={"space-between"}
         alignItems="flex-start"
         style={{ height: "40%", marginTop: 60 }}
       >
         <Grid item container xs={12} md={5} style={{}}>
           <Grid item container>
-            <h1 className="purple-header ">Mission</h1>
+            <h1
+              className="purple-header "
+              style={{ textAlign: mobile ? "center" : "left" }}
+            >
+              Mission
+            </h1>
             <p
               style={{
                 color: "#151515",
@@ -279,7 +297,7 @@ const MeetKEKE = () => {
         xs={12}
         md={6}
         alignItems="flex-start"
-        justifyContent={"center"}
+        justifyContent={"space-between"}
       >
         <img src={Keala} alt="owner" height="400" width="400" />
       </Grid>

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import AppContext from "./context/appContext";
 import { Grid } from "@mui/material";
 
 const themeColors = {
@@ -9,6 +10,8 @@ const themeColors = {
   homePurple: "rgba(84, 23, 67,1)",
 };
 export const Disclaimer = () => {
+  const appContext = useContext(AppContext);
+  const { horizontalPadding } = appContext;
   return (
     <Grid
       item
@@ -19,8 +22,8 @@ export const Disclaimer = () => {
         paddingBottom: 56,
         flex: 1,
         backgroundColor: themeColors.homePurple,
-        paddingLeft: 80,
-        paddingRight: 80,
+        paddingLeft: horizontalPadding,
+        paddingRight: horizontalPadding,
       }}
       // justifyContent={mediumScreen ? "space-evenly" : "space-evenly"}
     >
