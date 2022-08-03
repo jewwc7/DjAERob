@@ -32,7 +32,7 @@ const themeColors = {
 };
 export const ContactMe = () => {
   const appContext = useContext(AppContext);
-  const { horizontalPadding } = appContext;
+  const { horizontalPadding, mobile } = appContext;
   return (
     <Grid
       item
@@ -49,7 +49,9 @@ export const ContactMe = () => {
     >
       <Grid item container xs={12} md={6}>
         <Grid item xs={12}>
-          <h1 style={{}}>Lets Connect</h1>
+          <h1 style={{ textAlign: mobile ? "center" : "left" }}>
+            Lets Connect
+          </h1>
         </Grid>
         <Grid item container xs={12} spacing={4} style={{ marginTop: 16 }}>
           <Grid item container xs={12} spacing={4}>

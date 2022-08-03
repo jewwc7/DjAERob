@@ -83,7 +83,14 @@ export const ServicesPage = () => {
               marginTop: 32,
             }}
           >
-            <h1 style={{ color: themeColors.homePurple }}>{title}</h1>
+            <h1
+              style={{
+                color: themeColors.homePurple,
+                textAlign: mobile ? "center" : "left",
+              }}
+            >
+              {title}
+            </h1>
             <div style={{ marginTop: 24 }}>
               <h3
                 style={{

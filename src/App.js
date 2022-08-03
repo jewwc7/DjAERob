@@ -213,7 +213,7 @@ const PurposeAndMission = () => {
           />
         </Grid>
         <Grid item container xs={12} md={5} justifyContent={"flex-start"}>
-          <Grid item container>
+          <Grid item>
             <h1
               className="purple-header"
               style={{ textAlign: mobile ? "center" : "left" }}
@@ -248,7 +248,7 @@ const PurposeAndMission = () => {
         style={{ height: "40%", marginTop: 60 }}
       >
         <Grid item container xs={12} md={5} style={{}}>
-          <Grid item container>
+          <Grid item>
             <h1
               className="purple-header "
               style={{ textAlign: mobile ? "center" : "left" }}
