@@ -14,20 +14,21 @@ export const Services = () => {
   }
   const servicesArr = [
     {
-      image: SwedishThumbnail,
-      title: "Relaxation Massage",
-      priceText: "90 minutes - $100",
-    },
-    {
       image: SportThumbnail,
 
-      title: "Sports Massage",
-      priceText: "90 minutes - $100",
+      title: "Prenatal Massage",
+      priceText: "60 minutes - $80",
     },
+    {
+      image: SwedishThumbnail,
+      title: "Relaxation Massage",
+      priceText: "60 minutes - $100",
+    },
+
     {
       image: DeepTissueThumbnail,
       title: "Deep Tissue Massage",
-      priceText: "90 minutes - $100",
+      priceText: "90 minutes - $160",
     },
   ];
 

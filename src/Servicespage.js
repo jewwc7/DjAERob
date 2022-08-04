@@ -30,7 +30,7 @@ export const ServicesPage = () => {
           ---Includes complimentary hot stones and aromatherapy.
         `,
       benefits:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+        "Increased Blood Flow, Relieves Stress, Muscle Tension and an Increased Sense of Well Being.",
     },
     {
       image: SportSportHeader,
@@ -38,7 +38,7 @@ export const ServicesPage = () => {
       purpose:
         "Prenatal massage is a relaxation massage for the expecting mother that aims to relax tension, improve circulation and mobility - all while creating a sense of oneness between the mother and their growing child.",
       benefits:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+        "Alleviating Muscle and Joint Pain, Reduced Labor Pain During Childbirth, Improved Mood, Reduction of Stress and Anxiety.",
     },
     {
       image: DeepTissueHeader,
@@ -46,7 +46,7 @@ export const ServicesPage = () => {
       purpose:
         "Combined massage techniques utilizing deeper manipulations that focus on the soft and connective tissues of the body to foster imbalance corrections. Sports massage helps increase range of motion, flexibility, joint mobility, alleviate muscle tension and muscle aches --- Only 90 and 120 minutes due to time for proper muscle manipulation",
       benefits:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+        "Reduction in Pain, Stress Relief, Rehabilition of Injured Muscles, Lower Blood Pressure and Scar Tissue Break-up.",
     },
     /* {
       image: ThirtyMinute,
@@ -148,38 +148,6 @@ export const ServicesPage = () => {
     >
       <TopNav />
       <Grid item container xs={12} justifyContent={mobile ? null : "center"}>
-        <Grid
-          item
-          xs={12}
-          md={6}
-          xl={6}
-          style={{
-            paddingLeft: horizontalPadding,
-            paddingRight: horizontalPadding,
-            marginTop: 32,
-          }}
-        >
-          <div
-            style={{
-              borderWidth: 2,
-              borderColor: themeColors.homeYellowOrange,
-              padding: 16,
-              display: "flex",
-              justifyContent: "space-between",
-              border: `2px solid ${themeColors.homeYellowOrange}`,
-            }}
-          >
-            <h2 style={{ color: themeColors.homeYellowOrange }}>Add-Ons</h2>
-            <div>
-              <p style={{ color: themeColors.homeYellowOrange }}>
-                Hot Towel Treatment - $10.00
-              </p>
-              <p style={{ color: themeColors.homeYellowOrange }}>
-                Aromatherapy - $5.00
-              </p>
-            </div>
-          </div>
-        </Grid>
         <Grid item container xs={12}>
           {showServices()}
         </Grid>
@@ -191,4 +159,44 @@ export const ServicesPage = () => {
   );
 };
 
+//Not in use
+function AddOnBox() {
+  const appContext = useContext(AppContext);
+
+  const { tablet, mobile, horizontalPadding } = appContext;
+  return (
+    <Grid
+      item
+      xs={12}
+      md={6}
+      xl={6}
+      style={{
+        paddingLeft: horizontalPadding,
+        paddingRight: horizontalPadding,
+        marginTop: 32,
+      }}
+    >
+      <div
+        style={{
+          borderWidth: 2,
+          borderColor: themeColors.homeYellowOrange,
+          padding: 16,
+          display: "flex",
+          justifyContent: "space-between",
+          border: `2px solid ${themeColors.homeYellowOrange}`,
+        }}
+      >
+        <h2 style={{ color: themeColors.homeYellowOrange }}>Add-Ons</h2>
+        <div>
+          <p style={{ color: themeColors.homeYellowOrange }}>
+            Hot Towel Treatment - $10.00
+          </p>
+          <p style={{ color: themeColors.homeYellowOrange }}>
+            Aromatherapy - $5.00
+          </p>
+        </div>
+      </div>
+    </Grid>
+  );
+}
 export default ServicesPage;
