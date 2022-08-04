@@ -19,16 +19,15 @@ export const Reviews = () => {
   const reviewArr = [
     {
       reviewer: "Johnny",
-      body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+      body: "I had a deep tissue full body massage with Keala, and she did an AMAZING job getting the knots out of my back. I've had this tightness in my legs and upper back for the longest time but she managed to iron it all out.",
     },
     {
       reviewer: "Quin",
-      body: "Ipsum Lorem dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+      body: "The quality of the massage is wonderful better than more known places. Very affordable prices. Highly recommend. ",
     },
     {
       reviewer: "Jackie",
-
-      body: "Consectetur ipsum Lorem dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+      body: "Great prices and the massages are magical. First massage therapist that actually made me feel relaxed. I go every time I'm in Kansas City",
     },
   ];
   const [currentReview, setCurrentReview] = useState(0);
@@ -56,7 +55,7 @@ export const Reviews = () => {
 
         <div>
           <p style={{ textAlign: "center" }}>{reviewArr[currentReview].body}</p>
-          <p style={{ textAlign: "center" }}>
+          <p style={{ textAlign: "center", fontStyle: "italic" }}>
             -- {reviewArr[currentReview].reviewer}
           </p>
         </div>

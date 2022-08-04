@@ -125,9 +125,11 @@ const Hero = () => {
       style={{
         backgroundImage: `linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, 0.7)), url(${heroImage})`,
         backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
         backgroundSize: "cover", //100% looks good on desktop, make tenary if want to change
+        // backgroundSize: `100% auto`,
         height: "100%",
-        width: "100%",
+        //  width: "100%",
         position: "relative",
         //  filter: "grayscale(100%)",
       }}
