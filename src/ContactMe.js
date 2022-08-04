@@ -40,11 +40,6 @@ export const ContactMe = () => {
     email: "",
     message: "",
   });
-  const handleChange = (e) => {
-    console.log(e.target);
-    //  setQuote(e.target.value);
-    updateFormData(e);
-  };
 
   ///////////Form submission functions////////////////////////////////////////////////////
 
@@ -59,7 +54,7 @@ export const ContactMe = () => {
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "jobappMark", ...formData }),
+      body: encode({ "form-name": "kealatherapy", ...formData }),
     })
       .then(() => console.log("Success"))
       .catch((error) => alert(error));
@@ -81,6 +76,12 @@ export const ContactMe = () => {
   function submitData(e) {
     handleSubmit(e);
     e.preventDefault();
+    setFormData({
+      //clear textfields
+      name: "",
+      email: "",
+      message: "",
+    });
   }
 
   return (
@@ -113,6 +114,7 @@ export const ContactMe = () => {
                 variant="filled"
                 style={{ backgroundColor: "white", width: "100%" }}
                 onChange={updateFormData}
+                value={formData.name}
               />
             </Grid>
             <Grid item xs={12} md={9}>
@@ -123,6 +125,7 @@ export const ContactMe = () => {
                 name="email"
                 variant="filled"
                 style={{ backgroundColor: "white", width: "100%" }}
+                value={formData.email}
               />
             </Grid>
             <Grid item xs={12} md={9}>
@@ -135,6 +138,7 @@ export const ContactMe = () => {
                 variant="filled"
                 style={{ backgroundColor: "white", width: "100%" }}
                 onChange={updateFormData}
+                value={formData.message}
               />
             </Grid>
           </Grid>
