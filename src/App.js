@@ -18,6 +18,7 @@ import heroImage from "./WebPhotos/HeaderImageB&W.png";
 import purposeImg from "./WebPhotos/OurPurpose.png";
 import missionImg from "./WebPhotos/OurMission.png";
 import Keala from "./Photography/Keala.jpg";
+import MobileReviews from "./MobileReviews";
 
 const Section_Margin_TOP = 64;
 function AppWrapper() {

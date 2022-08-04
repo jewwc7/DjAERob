@@ -48,7 +48,7 @@ export const ContactMe = () => {
       // justifyContent={mediumScreen ? "space-evenly" : "space-evenly"}
     >
       <Grid item container xs={12} md={6}>
-        <Grid item xs={12}>
+        <Grid item container xs={12}>
           <h1 style={{ textAlign: mobile ? "center" : "left" }}>
             Lets Connect
           </h1>

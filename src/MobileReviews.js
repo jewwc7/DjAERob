@@ -14,6 +14,7 @@ const themeColors = {
 export const MobileReviews = () => {
   const appContext = useContext(AppContext);
   const { horizontalPadding } = appContext;
+  const [dotIndex, setDotIndex] = useState(0);
 
   const reviewArr = [
     {
@@ -33,12 +34,20 @@ export const MobileReviews = () => {
   const [currentReview, setCurrentReview] = useState(0);
   function goToNext() {
     const lengthOfReviews = reviewArr.length - 1;
-    if (currentReview === lengthOfReviews) return setCurrentReview(0);
-    else setCurrentReview(currentReview + 1);
+    if (currentReview === lengthOfReviews) {
+      setDotIndex(0);
+      return setCurrentReview(0);
+    } else {
+      setCurrentReview(currentReview + 1);
+      setDotIndex(currentReview + 1);
+    }
   }
   function goBack() {
     if (currentReview === 0) return;
-    else setCurrentReview(currentReview - 1);
+    else {
+      setCurrentReview(currentReview - 1);
+      return setDotIndex(currentReview - 1);
+    }
   }
   function showReviews() {
     return (
@@ -71,6 +80,25 @@ export const MobileReviews = () => {
       </div>
     );
   }
+
+  function displayDots() {
+    return reviewArr.map((review, index) => {
+      const onDotReview = dotIndex === index;
+      return (
+        <Grid
+          item
+          style={{
+            borderRadius: 50,
+            height: 10,
+            width: 10,
+            border: `.5px solid ${themeColors.homePurple}`,
+            marginRight: 5,
+            backgroundColor: onDotReview ? themeColors.homePurple : null,
+          }}
+        ></Grid>
+      );
+    });
+  }
   return (
     <Grid
       item
@@ -83,26 +111,49 @@ export const MobileReviews = () => {
         paddingRight: horizontalPadding,
         flex: 1,
       }}
-      alignItems="space-between"
     >
-      <Grid item container xs={3} alignItems="center">
-        <Grid item xs={12} container justifyContent="flex-start">
-          <ArrowBackIosNewIcon
-            sx={{ color: themeColors.homeRed, fontSize: 40, cursor: "pointer" }}
-            onClick={goBack}
-          />
-        </Grid>
-      </Grid>
-      <Grid item container xs={6} alignItems="center" justifyContent="center">
+      <Grid item container xs={12} alignItems="center" justifyContent="center">
         {showReviews()}
       </Grid>
-
-      <Grid item container xs={3} justifyContent="flex-end" alignItems="center">
-        <Grid item container xs={12} justifyContent="flex-end">
-          <ArrowForwardIosIcon
-            sx={{ color: themeColors.homeRed, fontSize: 40, cursor: "pointer" }}
-            onClick={goToNext}
-          />
+      <Grid
+        item
+        container
+        xs={12}
+        alignItems="center"
+        justifyContent={"space-between"}
+      >
+        <Grid item container xs={1}>
+          <Grid item xs={12} container justifyContent="flex-start">
+            <ArrowBackIosNewIcon
+              sx={{
+                color: themeColors.homeRed,
+                fontSize: 20,
+                cursor: "pointer",
+              }}
+              onClick={goBack}
+            />
+          </Grid>
+        </Grid>
+        <Grid
+          item
+          container
+          xs={8}
+          alignItems="center"
+          justifyContent={"center"}
+        >
+          {displayDots()}
+        </Grid>
+        <Grid item container xs={1} justifyContent="flex-end">
+          <Grid item container xs={12} justifyContent="flex-end">
+            <ArrowForwardIosIcon
+              sx={{
+                color: themeColors.homeRed,
+                fontSize: 20,
+                cursor: "pointer",
+              }}
+              onClick={goToNext}
+            />
+          </Grid>
         </Grid>
       </Grid>
     </Grid>

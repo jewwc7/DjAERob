@@ -1,8 +1,9 @@
 import React, { useContext, useState } from "react";
 import AppContext from "./context/appContext";
-import { Grid } from "@mui/material";
+import { Grid, Hidden } from "@mui/material";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import MobileReviews from "./MobileReviews";
 
 const themeColors = {
   homeRed: "rgba(161, 8, 59,1)",
@@ -85,26 +86,45 @@ export const Reviews = () => {
       }}
       alignItems="space-between"
     >
-      <Grid item container xs={3} alignItems="center">
-        <Grid item xs={12} container justifyContent="flex-start">
-          <ArrowBackIosNewIcon
-            sx={{ color: themeColors.homeRed, fontSize: 40, cursor: "pointer" }}
-            onClick={goBack}
-          />
+      <Hidden mdDown>
+        <Grid item container xs={3} alignItems="center">
+          <Grid item xs={12} container justifyContent="flex-start">
+            <ArrowBackIosNewIcon
+              sx={{
+                color: themeColors.homeRed,
+                fontSize: 40,
+                cursor: "pointer",
+              }}
+              onClick={goBack}
+            />
+          </Grid>
         </Grid>
-      </Grid>
-      <Grid item container xs={6} alignItems="center" justifyContent="center">
-        {showReviews()}
-      </Grid>
+        <Grid item container xs={6} alignItems="center" justifyContent="center">
+          {showReviews()}
+        </Grid>
 
-      <Grid item container xs={3} justifyContent="flex-end" alignItems="center">
-        <Grid item container xs={12} justifyContent="flex-end">
-          <ArrowForwardIosIcon
-            sx={{ color: themeColors.homeRed, fontSize: 40, cursor: "pointer" }}
-            onClick={goToNext}
-          />
+        <Grid
+          item
+          container
+          xs={3}
+          justifyContent="flex-end"
+          alignItems="center"
+        >
+          <Grid item container xs={12} justifyContent="flex-end">
+            <ArrowForwardIosIcon
+              sx={{
+                color: themeColors.homeRed,
+                fontSize: 40,
+                cursor: "pointer",
+              }}
+              onClick={goToNext}
+            />
+          </Grid>
         </Grid>
-      </Grid>
+      </Hidden>
+      <Hidden mdUp>
+        <MobileReviews />
+      </Hidden>
     </Grid>
   );
 };
