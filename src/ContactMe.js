@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import AppContext from "./context/appContext";
 
 import MyButton from "./CustomButton";
@@ -33,6 +33,56 @@ const themeColors = {
 export const ContactMe = () => {
   const appContext = useContext(AppContext);
   const { horizontalPadding, mobile } = appContext;
+
+  const [dataSent, setDataSent] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const handleChange = (e) => {
+    console.log(e.target);
+    //  setQuote(e.target.value);
+    updateFormData(e);
+  };
+
+  ///////////Form submission functions////////////////////////////////////////////////////
+
+  const encode = (data) => {
+    return Object.keys(data)
+      .map(
+        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
+      )
+      .join("&");
+  };
+  function handleSubmit(e) {
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({ "form-name": "jobappMark", ...formData }),
+    })
+      .then(() => console.log("Success"))
+      .catch((error) => alert(error));
+    e.preventDefault();
+  }
+  /////////////////////////////////////////////////////////////////////////////////////////
+
+  function updateFormData(e) {
+    console.log(formData);
+    console.log(e.target.name + "what looking at");
+    const field = e.target.name; //get the fileds name so it can be udated in the state(makes it dynamic)
+    setFormData((prev) => {
+      return {
+        ...prev,
+        [field]: e.target.value,
+      };
+    });
+  }
+  function submitData(e) {
+    handleSubmit(e);
+    e.preventDefault();
+  }
+
   return (
     <Grid
       item
@@ -59,14 +109,18 @@ export const ContactMe = () => {
               <TextField
                 id="Name"
                 label="Name"
+                name="name"
                 variant="filled"
                 style={{ backgroundColor: "white", width: "100%" }}
+                onChange={updateFormData}
               />
             </Grid>
             <Grid item xs={12} md={9}>
               <TextField
                 id="outlined-basic"
+                onChange={updateFormData}
                 label="Email"
+                name="email"
                 variant="filled"
                 style={{ backgroundColor: "white", width: "100%" }}
               />
@@ -75,15 +129,17 @@ export const ContactMe = () => {
               <TextField
                 multiline
                 rows={4}
+                name="message"
                 id="outlined-basic"
                 label="Comment"
                 variant="filled"
                 style={{ backgroundColor: "white", width: "100%" }}
+                onChange={updateFormData}
               />
             </Grid>
           </Grid>
           <Grid item xs={2}>
-            <MyButton children="Submit" hoverEffect />
+            <MyButton children="Submit" hoverEffect onClick={submitData} />
           </Grid>
         </Grid>
       </Grid>
