@@ -54,7 +54,7 @@ export const ContactMe = () => {
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "kealatherapy", ...formData }),
+      body: encode({ "form-name": "contact", ...formData }),
     })
       .then(() => console.log("Success"))
       .catch((error) => alert(error));
