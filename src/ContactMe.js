@@ -34,7 +34,7 @@ export const ContactMe = () => {
   const appContext = useContext(AppContext);
   const { horizontalPadding, mobile } = appContext;
 
-  const [dataSent, setDataSent] = useState(true); //controls the sent modal
+  const [dataSent, setDataSent] = useState(false); //controls the sent modal
   const [formData, setFormData] = useState({
     name: "",
     email: "",
