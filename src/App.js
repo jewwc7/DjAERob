@@ -308,7 +308,10 @@ const MeetKEKE = () => {
         <Grid item container>
           <h1
             className="purple-header"
-            style={{ textAlign: mobile ? "center" : "left" }}
+            style={{
+              textAlign: mobile ? "center" : "left",
+              marginTop: mobile ? 8 : 0,
+            }}
           >
             Meet Keke
           </h1>
