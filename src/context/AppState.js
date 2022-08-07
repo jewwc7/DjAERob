@@ -1,6 +1,5 @@
 import React, { useState, useReducer, useEffect } from "react";
 import AppContext from "./appContext";
-import data from "./data";
 
 import { useMediaQuery, createTheme } from "@mui/material";
 
@@ -12,8 +11,6 @@ import { useMediaQuery, createTheme } from "@mui/material";
 //very important! Have to intialize the context within child components. Not the main app, if I do the main app, intial value of context will be provided all the time
 //review onenote for the above
 const AppState = (props) => {
-  const { massageArr, massageTypes } = data;
-
   const theme = createTheme({
     breakpoints: {
       values: {
@@ -37,17 +34,7 @@ const AppState = (props) => {
   const [scrolling, setScrolling] = useState(null);
   const [highlight, setHighlight] = useState({ value: null });
   const [outline, setOutline] = useState({ home: true });
-  const initialState = {
-    //intial state object has to come before the usereducer or I will keep getting undefined
-    currentUser: {}, //signed in user will go here
-    massages: massageArr,
-    selectedMassage: massageArr[2],
-    practiceItem: null,
-    category: null, //will get set once the indivdual item is set, used to filter photos for the might like portion
-    statusbar,
-    individualItem: {}, //will be set the currently showed item
-    categories: [],
-  };
+  const initialState = {};
 
   //const searchMatches = currentState.allProducts.filter(product => product.style.includes(text))
 
@@ -72,7 +59,6 @@ const AppState = (props) => {
         modalVisible,
         setModalVisible,
         dispatch,
-        massageTypes,
         mobile,
         tablet,
         largeTablet,

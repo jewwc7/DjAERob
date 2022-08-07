@@ -34,7 +34,7 @@ export const ContactMe = () => {
   const appContext = useContext(AppContext);
   const { horizontalPadding, mobile } = appContext;
 
-  const [dataSent, setDataSent] = useState(false);
+  const [dataSent, setDataSent] = useState(true); //controls the sent modal
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -56,7 +56,7 @@ export const ContactMe = () => {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({ "form-name": "contact", ...formData }),
     })
-      .then(() => console.log("Success"))
+      .then(() => setDataSent(true))
       .catch((error) => alert(error));
     e.preventDefault();
   }
@@ -82,6 +82,9 @@ export const ContactMe = () => {
       email: "",
       message: "",
     });
+    setTimeout(() => {
+      setDataSent(false);
+    }, 3000);
   }
 
   return (
@@ -143,7 +146,14 @@ export const ContactMe = () => {
             </Grid>
           </Grid>
           <Grid item xs={2}>
-            <MyButton children="Submit" hoverEffect onClick={submitData} />
+            <MyButton
+              children={dataSent ? "Sent!" : "Submit"}
+              hoverEffect
+              onClick={submitData}
+              buttonStyle={
+                dataSent ? { backgroundColor: themeColors.homePurple } : {}
+              }
+            />
           </Grid>
         </Grid>
       </Grid>
@@ -194,48 +204,6 @@ export const ContactMe = () => {
         </Grid>
         <Grid item container xs={12}></Grid>
       </Grid>
-    </Grid>
-  );
-};
-
-const Footer = ({ tablet, mobile }) => {
-  const btnHieght = tablet ? "100%" : "100%";
-  return (
-    <Grid
-      item
-      container
-      xs={12}
-      md={6}
-      style={{ height: 160 }}
-      alignItems="center"
-    >
-      <Grid
-        item
-        container
-        xs={12}
-        md={8}
-        justifyContent="space-evenly"
-        alignItems="center"
-        //  flexDirection={mobile ? "column-reverse" : "row"}
-      >
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <InstagramIcon
-            className="social-icons"
-            alt="instagram profile"
-            onClick={() => window.open("https://www.twitter.com/Smarket_King/")}
-          />
-          <p>@h.o.m.etherapy</p>
-        </div>
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <EmailIcon
-            className="social-icons"
-            alt="email profile"
-            onClick={() => window.open("https://www.twitter.com/Smarket_King/")}
-          />
-          <p>homestudiotherapy@gmail.com</p>
-        </div>
-      </Grid>
-      <Grid item container xs={12}></Grid>
     </Grid>
   );
 };

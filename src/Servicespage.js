@@ -44,7 +44,7 @@ export const ServicesPage = () => {
       image: DeepTissueHeader,
       title: "Deep Tissue Massage",
       purpose:
-        "Combined massage techniques utilizing deeper manipulations that focus on the soft and connective tissues of the body to foster imbalance corrections. Sports massage helps increase range of motion, flexibility, joint mobility, alleviate muscle tension and muscle aches --- Only 90 and 120 minutes due to time for proper muscle manipulation",
+        "Combined massage techniques utilizing deeper manipulations that focus on the soft and connective tissues of the body to foster imbalance corrections. --- Only 90 and 120 minutes due to time for proper muscle manipulation.",
       benefits:
         "Reduction in Pain, Stress Relief, Rehabilition of Injured Muscles, Lower Blood Pressure and Scar Tissue Break-up.",
     },
