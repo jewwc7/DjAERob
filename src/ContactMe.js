@@ -165,6 +165,7 @@ export const ContactMe = () => {
         md={6}
         alignItems="center"
         justifyContent="center"
+        style={{ marginTop: mobile ? 32 : 0 }}
       >
         <Grid
           item

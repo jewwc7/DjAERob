@@ -219,7 +219,10 @@ const PurposeAndMission = () => {
           <Grid item>
             <h1
               className="purple-header"
-              style={{ textAlign: mobile ? "center" : "left" }}
+              style={{
+                textAlign: mobile ? "center" : "left",
+                marginTop: mobile ? 32 : 0,
+              }}
             >
               Purpose
             </h1>
@@ -280,6 +283,8 @@ const PurposeAndMission = () => {
             style={{
               width: "100%",
               height: "100%",
+              marginTop: mobile ? 32 : 0,
+
               // height: mediumScreen ? "85%" : "55%",
             }}
           />
@@ -310,7 +315,7 @@ const MeetKEKE = () => {
             className="purple-header"
             style={{
               textAlign: mobile ? "center" : "left",
-              marginTop: mobile ? 8 : 0,
+              marginTop: mobile ? 32 : 0,
             }}
           >
             Meet Keke
