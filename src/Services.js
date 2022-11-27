@@ -5,6 +5,7 @@ import MyCard from "./CustomCards";
 import SportThumbnail from "./WebPhotos/SportThumbnail.png";
 import SwedishThumbnail from "./WebPhotos/SwedishThumbnail.png";
 import DeepTissueThumbnail from "./WebPhotos/DeepTissueThumbnail.png";
+import ThirtyMinute from "./WebPhotos/ThirtyMinute.png";
 
 export const Services = () => {
   const appContext = useContext(AppContext);
@@ -29,6 +30,11 @@ export const Services = () => {
       image: DeepTissueThumbnail,
       title: "Deep Tissue Massage",
       priceText: "Starting at $160",
+    },
+    {
+      image: ThirtyMinute,
+      title: "Couples Massage",
+      priceText: "Starting at $220",
     },
   ];
 
