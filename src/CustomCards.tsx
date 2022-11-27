@@ -95,7 +95,7 @@ const defaultCardStyle = {
 };
 
 const defaultCardImgStyle = {
-  // height: 50,
+  height: 210, //height of the thumbnails is 210, only had to do this when adding couples msg img which is not a thumbnail
   width: "100%",
 };
 
