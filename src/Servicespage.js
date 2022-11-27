@@ -7,6 +7,8 @@ import TopNav from "./TopNav";
 import SwedishHeader from "./WebPhotos/SwedishHeader.png";
 import SportSportHeader from "./WebPhotos/SportSportHeader.png";
 import DeepTissueHeader from "./WebPhotos/DeepTissueHeader.png";
+import ThirtyMinute from "./WebPhotos/ThirtyMinute.png";
+
 import AppContext from "./context/appContext";
 
 const themeColors = {
@@ -48,14 +50,14 @@ export const ServicesPage = () => {
       benefits:
         "Reduction in Pain, Stress Relief, Rehabilition of Injured Muscles, Lower Blood Pressure and Scar Tissue Break-up.",
     },
-    /* {
+    {
       image: ThirtyMinute,
-      title: "30 Minute Refresher",
+      title: "Couples Massage",
       purpose:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+        "In busy times, its hard to find quality time with your special someone. A couples massage is an intentioal reconnection with your person so both parties can relax and recenter.",
       benefits:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    },*/
+        "A potential increase in feelings of affection and intimacy within the relationship by the release of stress and happy hormones such as oxytocin, serotonin and dopamine.",
+    },
   ];
 
   function bookMassage() {

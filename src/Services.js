@@ -17,18 +17,18 @@ export const Services = () => {
       image: SportThumbnail,
 
       title: "Prenatal Massage",
-      priceText: "60 minutes - $80",
+      priceText: "Starting at $80",
     },
     {
       image: SwedishThumbnail,
       title: "Relaxation Massage",
-      priceText: "60 minutes - $100",
+      priceText: "Starting at $100",
     },
 
     {
       image: DeepTissueThumbnail,
       title: "Deep Tissue Massage",
-      priceText: "90 minutes - $160",
+      priceText: "Starting at $160",
     },
   ];
 
