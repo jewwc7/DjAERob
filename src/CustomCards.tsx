@@ -110,9 +110,5 @@ const styles = {
     fontWeight: "400",
   },
 };
-const defaultButtonTextStyle = {
-  fontSize: 20,
-  color: "#ffffff",
-};
 
 export default MyCard;

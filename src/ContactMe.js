@@ -2,23 +2,7 @@ import React, { useContext, useState } from "react";
 import AppContext from "./context/appContext";
 
 import MyButton from "./CustomButton";
-import {
-  Grid,
-  Button,
-  IconButton,
-  Paper,
-  Hidden,
-  Container,
-  useMediaQuery,
-  useTheme,
-  createTheme,
-  Icon,
-  Slide,
-  Fade,
-  TextField,
-} from "@mui/material";
-import MyCard from "./CustomCards";
-import purposeImg from "./Photos/purposeImg.jpg";
+import { Grid, TextField } from "@mui/material";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
@@ -37,6 +21,7 @@ export const ContactMe = () => {
   const [dataSent, setDataSent] = useState(false); //controls the sent modal
   const [formData, setFormData] = useState({
     name: "",
+    phoneNumber: "",
     email: "",
     message: "",
   });
@@ -79,6 +64,7 @@ export const ContactMe = () => {
     setFormData({
       //clear textfields
       name: "",
+      phoneNumber: "",
       email: "",
       message: "",
     });
@@ -101,63 +87,6 @@ export const ContactMe = () => {
       }}
       // justifyContent={mediumScreen ? "space-evenly" : "space-evenly"}
     >
-      <Grid item container xs={12} md={6}>
-        <Grid item container xs={12}>
-          <h1 style={{ textAlign: mobile ? "center" : "left" }}>
-            Lets Connect
-          </h1>
-        </Grid>
-        <Grid item container xs={12} spacing={4} style={{ marginTop: 16 }}>
-          <Grid item container xs={12} spacing={4}>
-            <Grid item xs={12} md={9}>
-              <TextField
-                id="Name"
-                label="Name"
-                name="name"
-                variant="filled"
-                style={{ backgroundColor: "white", width: "100%" }}
-                onChange={updateFormData}
-                value={formData.name}
-              />
-            </Grid>
-            <Grid item xs={12} md={9}>
-              <TextField
-                id="outlined-basic"
-                onChange={updateFormData}
-                label="Email"
-                name="email"
-                variant="filled"
-                style={{ backgroundColor: "white", width: "100%" }}
-                value={formData.email}
-              />
-            </Grid>
-            <Grid item xs={12} md={9}>
-              <TextField
-                multiline
-                rows={4}
-                name="message"
-                id="outlined-basic"
-                label="Comment"
-                variant="filled"
-                style={{ backgroundColor: "white", width: "100%" }}
-                onChange={updateFormData}
-                value={formData.message}
-              />
-            </Grid>
-          </Grid>
-          <Grid item xs={2}>
-            <MyButton
-              children={dataSent ? "Sent!" : "Submit"}
-              hoverEffect
-              onClick={submitData}
-              buttonStyle={
-                dataSent ? { backgroundColor: themeColors.homePurple } : {}
-              }
-            />
-          </Grid>
-        </Grid>
-      </Grid>
-
       <Grid
         item
         container
@@ -165,7 +94,6 @@ export const ContactMe = () => {
         md={6}
         alignItems="center"
         justifyContent="center"
-        style={{ marginTop: mobile ? 32 : 0 }}
       >
         <Grid
           item
@@ -204,6 +132,94 @@ export const ContactMe = () => {
           </Grid>
         </Grid>
         <Grid item container xs={12}></Grid>
+      </Grid>
+      <Grid
+        item
+        container
+        xs={12}
+        md={6}
+        style={{ marginTop: mobile ? 32 : 0 }}
+      >
+        <Grid item container xs={12}>
+          <h1 style={{ textAlign: mobile ? "center" : "left" }}>
+            Lets Connect
+          </h1>
+        </Grid>
+        <Grid item container xs={12} spacing={4} style={{ marginTop: 16 }}>
+          <Grid item container xs={12} spacing={4}>
+            <Grid item xs={12} md={9}>
+              <TextField
+                id="Name"
+                label="Name"
+                name="name"
+                variant="filled"
+                style={{ backgroundColor: "white", width: "100%" }}
+                onChange={updateFormData}
+                value={formData.name}
+              />
+            </Grid>
+            <Grid item xs={12} md={9}>
+              <TextField
+                name="phoneNumber"
+                id="outlined-basic"
+                label="Phone Number"
+                variant="filled"
+                style={{ backgroundColor: "white", width: "100%" }}
+                onChange={(e) => {
+                  if (e.target.value.toString().length <= 10) {
+                    updateFormData(e);
+                  } else {
+                    return;
+                  }
+                }}
+                value={formData.phoneNumber}
+                inputProps={{
+                  inputMode: "numeric",
+                  pattern: "[0-9]*",
+                  min: 10,
+                  max: 10,
+                }}
+                type="number"
+                placeholder="111-111-2345"
+                mask
+              />
+            </Grid>
+            <Grid item xs={12} md={9}>
+              <TextField
+                id="outlined-basic"
+                onChange={updateFormData}
+                label="Email"
+                name="email"
+                variant="filled"
+                style={{ backgroundColor: "white", width: "100%" }}
+                value={formData.email}
+              />
+            </Grid>
+            <Grid item xs={12} md={9}>
+              <TextField
+                multiline
+                rows={4}
+                name="message"
+                id="outlined-basic"
+                label="Comment"
+                variant="filled"
+                style={{ backgroundColor: "white", width: "100%" }}
+                onChange={updateFormData}
+                value={formData.message}
+              />
+            </Grid>
+          </Grid>
+          <Grid item xs={2}>
+            <MyButton
+              children={dataSent ? "Sent!" : "Submit"}
+              hoverEffect
+              onClick={submitData}
+              buttonStyle={
+                dataSent ? { backgroundColor: themeColors.homePurple } : {}
+              }
+            />
+          </Grid>
+        </Grid>
       </Grid>
     </Grid>
   );
