@@ -2,6 +2,16 @@ import React, { useState, useReducer, useEffect } from "react";
 import AppContext from "./appContext";
 
 import { useMediaQuery, createTheme } from "@mui/material";
+import { navButtonArr } from "../TopNav";
+
+export function scrollToSection(fromTopDistance) {
+  setTimeout(() => {
+    window.scrollTo({
+      top: fromTopDistance || 0,
+      behavior: "smooth",
+    });
+  }, 500);
+}
 
 //State File. Import context File and Return ContextFile.Provider
 //in value attribute pass any data you want to be accessed
@@ -28,6 +38,8 @@ const AppState = (props) => {
   const laptop = useMediaQuery(theme.breakpoints.down("desktop"), {}); //large
   const desktop = useMediaQuery(theme.breakpoints.up("desktop"), {}); //xl
   const horizontalPadding = mobile ? 20 : 80;
+
+  const connectSection = navButtonArr[navButtonArr.length - 1];
 
   const [modalVisible, setModalVisible] = useState(false);
   const [statusbar, setStatusbar] = useState({ offset: 1000, message: null }); //600 will ensure off the screen no matter the device
@@ -67,6 +79,8 @@ const AppState = (props) => {
         outline,
         setOutline,
         horizontalPadding,
+        scrollToSection,
+        connectSection,
       }}
     >
       {props.children}

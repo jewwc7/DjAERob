@@ -13,6 +13,7 @@ import AppContext from "./context/appContext";
 import Modal from "./Modal";
 import MyButton from "./CustomButton";
 import logo from "./Photography/HTherapylogo.png";
+import { scrollToSection } from "./context/AppState";
 const themeColors = {
   homeRed: "rgba(161, 8, 59,1)",
   homeDarkOrange: "rgba(247, 188, 0,1)",
@@ -20,6 +21,34 @@ const themeColors = {
   homeYellowOrange: "rgba(247, 188, 0,1)",
   homePurple: "rgba(84, 23, 67,1)",
 };
+
+export const navButtonArr = [
+  {
+    title: "Home",
+    sectionPostion: 0,
+    isScroll: true,
+    specialHighlight: themeColors.homePurple,
+  },
+  {
+    title: "Services",
+    sectionPostion: 0,
+    page: "services",
+    specialHighlight: themeColors.homePurple,
+  },
+  {
+    title: "Therapist",
+    sectionPostion: 1800,
+    isScroll: true,
+    specialHighlight: themeColors.homePurple,
+  },
+  {
+    title: "Connect",
+    sectionPostion: 2400, //document.body.scrollHeight, //this is how you scroll to bottom of page, used timeout so the new pages coordinates can be used(w/o timeout will scroll as far as prior page went down)
+    isScroll: true,
+    specialHighlight: themeColors.homePurple,
+  },
+];
+
 const TopNav = ({ mobile, tablet, desktop, laptop }) => {
   const [stickyClass, setStickyClass] = useState("");
   const appContext = useContext(AppContext);
@@ -43,42 +72,6 @@ const TopNav = ({ mobile, tablet, desktop, laptop }) => {
       windowHeight > 150 ? setStickyClass("sticky-nav") : setStickyClass("");
     }
   }
-
-  function scrollToSection(fromTopDistance) {
-    setTimeout(() => {
-      window.scrollTo({
-        top: fromTopDistance || 0,
-        behavior: "smooth",
-      });
-    }, 500);
-  }
-
-  const navButtonArr = [
-    {
-      title: "Home",
-      sectionPostion: 0,
-      isScroll: true,
-      specialHighlight: themeColors.homePurple,
-    },
-    {
-      title: "Services",
-      sectionPostion: 0,
-      page: "services",
-      specialHighlight: themeColors.homePurple,
-    },
-    {
-      title: "Therapist",
-      sectionPostion: 1800,
-      isScroll: true,
-      specialHighlight: themeColors.homePurple,
-    },
-    {
-      title: "Connect",
-      sectionPostion: 2400, //document.body.scrollHeight, //this is how you scroll to bottom of page, used timeout so the new pages coordinates can be used(w/o timeout will scroll as far as prior page went down)
-      isScroll: true,
-      specialHighlight: themeColors.homePurple,
-    },
-  ];
 
   function displayNavBtns() {
     return navButtonArr.map((btn, index) => {

@@ -10,6 +10,8 @@ import DeepTissueHeader from "./WebPhotos/DeepTissueHeader.png";
 import ThirtyMinute from "./WebPhotos/ThirtyMinute.png";
 
 import AppContext from "./context/appContext";
+import { scrollToSection } from "./context/AppState";
+import { useNavigate } from "react-router-dom";
 
 const themeColors = {
   homeRed: "rgba(161, 8, 59,1)",
@@ -21,9 +23,10 @@ const themeColors = {
 const Section_Margin_TOP = 64;
 
 export const ServicesPage = () => {
+  const navigate = useNavigate();
   const appContext = useContext(AppContext);
 
-  const { tablet, mobile, horizontalPadding } = appContext;
+  const { tablet, mobile, horizontalPadding, connectSection } = appContext;
   const servicesArr = [
     {
       image: SwedishHeader,
@@ -61,7 +64,9 @@ export const ServicesPage = () => {
   ];
 
   function bookMassage() {
-    window.open("https://pocketsuite.io/book/keke-jones");
+    navigate(`/`);
+    scrollToSection(connectSection.sectionPostion);
+    //  window.open("https://pocketsuite.io/book/keke-jones");
   }
 
   function showServices() {

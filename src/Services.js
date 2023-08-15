@@ -7,11 +7,18 @@ import SwedishThumbnail from "./WebPhotos/SwedishThumbnail.png";
 import DeepTissueThumbnail from "./WebPhotos/DeepTissueThumbnail.png";
 import ThirtyMinute from "./WebPhotos/ThirtyMinute.png";
 
+import { useNavigate } from "react-router-dom";
+import { scrollToSection } from "./context/AppState";
+
 export const Services = () => {
+  const navigate = useNavigate();
   const appContext = useContext(AppContext);
-  const { horizontalPadding } = appContext;
+  const { horizontalPadding, connectSection } = appContext;
+
   function bookMassage() {
-    window.open("https://pocketsuite.io/book/keke-jones");
+    navigate(`/`);
+    scrollToSection(connectSection.sectionPostion);
+    //  window.open("https://pocketsuite.io/book/keke-jones");
   }
   const servicesArr = [
     {

@@ -5,8 +5,13 @@ import MyButton from "./CustomButton";
 import "./MyFontsWebfontsKit.css";
 import { Grid } from "@mui/material";
 import AppContext from "./context/appContext";
-import AppState from "./context/AppState";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import AppState, { scrollToSection } from "./context/AppState";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useNavigate,
+} from "react-router-dom";
 import Services from "./Services";
 import { mainColors } from "./themecolors";
 import ContactMe from "./ContactMe";
@@ -109,12 +114,14 @@ const HomeScreen = () => {
     </Grid>
   );
 };
-const Hero = () => {
-  // const appContext = useContext(AppContext);
-  //  const { lineHeight, afterHeaderMargin, smallScreen } = appContext;
 
+const Hero = () => {
+  const appContext = useContext(AppContext);
+  const { connectSection } = appContext;
+  const navigate = useNavigate();
   function bookMassage() {
-    window.open("https://pocketsuite.io/book/keke-jones");
+    navigate(`/`);
+    scrollToSection(connectSection.sectionPostion);
   }
   return (
     <Grid
