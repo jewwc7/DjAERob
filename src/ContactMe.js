@@ -48,8 +48,6 @@ export const ContactMe = () => {
   /////////////////////////////////////////////////////////////////////////////////////////
 
   function updateFormData(e) {
-    console.log(formData);
-    console.log(e.target.name + "what looking at");
     const field = e.target.name; //get the fileds name so it can be udated in the state(makes it dynamic)
     setFormData((prev) => {
       return {
@@ -165,13 +163,14 @@ export const ContactMe = () => {
                 label="Phone Number"
                 variant="filled"
                 style={{ backgroundColor: "white", width: "100%" }}
-                onChange={(e) => {
-                  if (e.target.value.toString().length <= 10) {
-                    updateFormData(e);
-                  } else {
-                    return;
-                  }
-                }}
+                // onChange={(e) => {
+                //   if (e.target.value.toString().length >= 10) {
+                //     updateFormData(e);
+                //   } else {
+                //     return;
+                //   }
+                // }}
+                onChange={updateFormData}
                 value={formData.phoneNumber}
                 inputProps={{
                   inputMode: "numeric",
