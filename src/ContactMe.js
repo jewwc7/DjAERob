@@ -163,14 +163,14 @@ export const ContactMe = () => {
                 label="Phone Number"
                 variant="filled"
                 style={{ backgroundColor: "white", width: "100%" }}
-                // onChange={(e) => {
-                //   if (e.target.value.toString().length >= 10) {
-                //     updateFormData(e);
-                //   } else {
-                //     return;
-                //   }
-                // }}
-                onChange={updateFormData}
+                onChange={(e) => {
+                  if (e.target.value.toString().length <= 10) {
+                    updateFormData(e);
+                  } else {
+                    return;
+                  }
+                }}
+                //     onChange={updateFormData}
                 value={formData.phoneNumber}
                 inputProps={{
                   inputMode: "numeric",
