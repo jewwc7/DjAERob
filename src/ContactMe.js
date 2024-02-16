@@ -6,14 +6,9 @@ import { Grid, TextField } from "@mui/material";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
+import { mainColors } from "./themecolors";
+import { Facebook, Insta, PlayButton } from "./MediaIcons";
 
-const themeColors = {
-  homeRed: "rgba(161, 8, 59,1)",
-  homeDarkOrange: "rgba(247, 188, 0,1)",
-  homeLightOrange: "rgba(249, 147, 1,1)",
-  homeYellowOrange: "rgba(247, 188, 0,1)",
-  homePurple: "rgba(84, 23, 67,1)",
-};
 export const ContactMe = () => {
   const appContext = useContext(AppContext);
   const { horizontalPadding, mobile } = appContext;
@@ -72,156 +67,201 @@ export const ContactMe = () => {
   }
 
   return (
-    <Grid
-      item
-      container
-      xs={12}
-      style={{
-        paddingTop: 24,
-        paddingBottom: 56,
-        paddingLeft: horizontalPadding,
-        paddingRight: horizontalPadding,
-        flex: 1,
-      }}
-      // justifyContent={mediumScreen ? "space-evenly" : "space-evenly"}
-    >
+    <div style={{ flex: 1, backgroundColor: mainColors.black }}>
       <Grid
         item
         container
         xs={12}
-        md={6}
-        alignItems="center"
-        justifyContent="center"
+        style={{
+          paddingTop: 24,
+          paddingBottom: 114.5, //not sure why But I need this so no white at bottom
+          paddingLeft: horizontalPadding,
+          paddingRight: horizontalPadding,
+          flex: 1,
+          backgroundColor: mainColors.black,
+        }}
+        // justifyContent={mediumScreen ? "space-evenly" : "space-evenly"}
       >
         <Grid
           item
           container
           xs={12}
-          md={8}
-          justifyContent="flex-start"
+          md={6}
           alignItems="center"
-          //  flexDirection={mobile ? "column-reverse" : "row"}
+          justifyContent="center"
         >
-          <Grid item xs={12} style={{ display: "flex", alignItems: "center" }}>
-            <InstagramIcon
-              className="social-icons"
-              alt="instagram profile"
-              onClick={() =>
-                window.open("https://www.instagram.com/h.o.m.etherapy/?hl=en")
-              }
-            />
-            <p className="footerP">@h.o.m.etherapy</p>
-          </Grid>
           <Grid
             item
+            container
             xs={12}
-            style={{ display: "flex", alignItems: "center", marginTop: 8 }}
+            md={8}
+            justifyContent="flex-start"
+            alignItems="center"
+
+            //  flexDirection={mobile ? "column-reverse" : "row"}
           >
-            <EmailIcon className="social-icons" alt="email profile" />
-            <p className="footerP">homestudiotherapy@gmail.com</p>
+            <Grid
+              item
+              xs={12}
+              style={{ display: "flex", alignItems: "center" }}
+            >
+              <a href="https://www.instagram.com/djaerob" style={styles.link}>
+                <li style={styles.icons}>
+                  <Insta
+                    className="social-icons"
+                    alt="instagram profile"
+                    // onClick={() =>
+                    //   window.open("https://www.instagram.com/h.o.m.etherapy/?hl=en")
+                    // }
+                  />
+                  Instagram
+                </li>
+              </a>
+            </Grid>
+            <Grid
+              item
+              xs={12}
+              style={{ display: "flex", alignItems: "center", marginTop: 8 }}
+            >
+              <a href="https://facebook.com/dj.a.e.rob/" style={styles.link}>
+                <li style={styles.icons}>
+                  <Facebook />
+                  Facebook
+                </li>
+              </a>
+            </Grid>
+            <Grid
+              item
+              xs={12}
+              style={{ display: "flex", alignItems: "center", marginTop: 8 }}
+            >
+              <a href="https://www.mixcloud.com/djaerob/" style={styles.link}>
+                <li style={styles.icons}>
+                  <PlayButton />
+                  Mixcloud
+                </li>
+              </a>
+            </Grid>
+            <Grid
+              item
+              xs={12}
+              style={{ display: "flex", alignItems: "center", marginTop: 8 }}
+            >
+              <a href="https://linktr.ee/Djaerob" style={styles.link}>
+                <li style={styles.icons}>
+                  <PlayButton />
+                  LinkTree
+                </li>
+              </a>
+            </Grid>
           </Grid>
-          <Grid
-            item
-            xs={12}
-            style={{ display: "flex", alignItems: "center", marginTop: 8 }}
-          >
-            <PhoneIcon className="social-icons" alt="phone number" />
-            <p className="footerP">816-692-2747</p>
+          <Grid item container xs={12}></Grid>
+        </Grid>
+        <Grid
+          item
+          container
+          xs={12}
+          md={6}
+          style={{ marginTop: mobile ? 32 : 0 }}
+        >
+          <Grid item container xs={12}>
+            <h1 style={{ textAlign: mobile ? "center" : "left" }}>
+              Contact Me
+            </h1>
+          </Grid>
+          <Grid item container xs={12} spacing={4} style={{ marginTop: 16 }}>
+            <Grid item container xs={12} spacing={4}>
+              <Grid item xs={12} md={9}>
+                <TextField
+                  id="Name"
+                  label="Name"
+                  name="name"
+                  variant="filled"
+                  style={{ backgroundColor: "white", width: "100%" }}
+                  onChange={updateFormData}
+                  value={formData.name}
+                />
+              </Grid>
+              <Grid item xs={12} md={9}>
+                <TextField
+                  name="phoneNumber"
+                  id="outlined-basic"
+                  label="Phone Number"
+                  variant="filled"
+                  style={{ backgroundColor: "white", width: "100%" }}
+                  onChange={(e) => {
+                    if (e.target.value.toString().length <= 10) {
+                      updateFormData(e);
+                    } else {
+                      return;
+                    }
+                  }}
+                  //     onChange={updateFormData}
+                  value={formData.phoneNumber}
+                  inputProps={{
+                    inputMode: "numeric",
+                    pattern: "[0-9]*",
+                    min: 10,
+                    max: 10,
+                  }}
+                  type="number"
+                  placeholder="111-111-2345"
+                  mask
+                />
+              </Grid>
+              <Grid item xs={12} md={9}>
+                <TextField
+                  id="outlined-basic"
+                  onChange={updateFormData}
+                  label="Email"
+                  name="email"
+                  variant="filled"
+                  style={{ backgroundColor: "white", width: "100%" }}
+                  value={formData.email}
+                />
+              </Grid>
+              <Grid item xs={12} md={9}>
+                <TextField
+                  multiline
+                  rows={4}
+                  name="message"
+                  id="outlined-basic"
+                  label="Comment"
+                  variant="filled"
+                  style={{ backgroundColor: "white", width: "100%" }}
+                  onChange={updateFormData}
+                  value={formData.message}
+                />
+              </Grid>
+            </Grid>
+            <Grid item xs={2}>
+              <MyButton
+                children={dataSent ? "Sent!" : "Submit"}
+                hoverEffect
+                onClick={submitData}
+                buttonStyle={
+                  dataSent ? { backgroundColor: mainColors.white } : {}
+                }
+              />
+            </Grid>
           </Grid>
         </Grid>
-        <Grid item container xs={12}></Grid>
       </Grid>
-      <Grid
-        item
-        container
-        xs={12}
-        md={6}
-        style={{ marginTop: mobile ? 32 : 0 }}
-      >
-        <Grid item container xs={12}>
-          <h1 style={{ textAlign: mobile ? "center" : "left" }}>
-            Lets Connect
-          </h1>
-        </Grid>
-        <Grid item container xs={12} spacing={4} style={{ marginTop: 16 }}>
-          <Grid item container xs={12} spacing={4}>
-            <Grid item xs={12} md={9}>
-              <TextField
-                id="Name"
-                label="Name"
-                name="name"
-                variant="filled"
-                style={{ backgroundColor: "white", width: "100%" }}
-                onChange={updateFormData}
-                value={formData.name}
-              />
-            </Grid>
-            <Grid item xs={12} md={9}>
-              <TextField
-                name="phoneNumber"
-                id="outlined-basic"
-                label="Phone Number"
-                variant="filled"
-                style={{ backgroundColor: "white", width: "100%" }}
-                onChange={(e) => {
-                  if (e.target.value.toString().length <= 10) {
-                    updateFormData(e);
-                  } else {
-                    return;
-                  }
-                }}
-                //     onChange={updateFormData}
-                value={formData.phoneNumber}
-                inputProps={{
-                  inputMode: "numeric",
-                  pattern: "[0-9]*",
-                  min: 10,
-                  max: 10,
-                }}
-                type="number"
-                placeholder="111-111-2345"
-                mask
-              />
-            </Grid>
-            <Grid item xs={12} md={9}>
-              <TextField
-                id="outlined-basic"
-                onChange={updateFormData}
-                label="Email"
-                name="email"
-                variant="filled"
-                style={{ backgroundColor: "white", width: "100%" }}
-                value={formData.email}
-              />
-            </Grid>
-            <Grid item xs={12} md={9}>
-              <TextField
-                multiline
-                rows={4}
-                name="message"
-                id="outlined-basic"
-                label="Comment"
-                variant="filled"
-                style={{ backgroundColor: "white", width: "100%" }}
-                onChange={updateFormData}
-                value={formData.message}
-              />
-            </Grid>
-          </Grid>
-          <Grid item xs={2}>
-            <MyButton
-              children={dataSent ? "Sent!" : "Submit"}
-              hoverEffect
-              onClick={submitData}
-              buttonStyle={
-                dataSent ? { backgroundColor: themeColors.homePurple } : {}
-              }
-            />
-          </Grid>
-        </Grid>
-      </Grid>
-    </Grid>
+    </div>
   );
+};
+
+const styles = {
+  icons: {
+    flexDirection: "row",
+    alignItems: "center",
+    display: "flex",
+    marginTop: 4,
+    color: mainColors.white,
+  },
+  link: {
+    textDecoration: "none",
+  },
 };
 
 export default ContactMe;

@@ -1,64 +1,33 @@
 import React, { useContext } from "react";
-import AppContext from "./context/appContext";
+import "./App.css";
 import { Grid } from "@mui/material";
-import MyCard from "./CustomCards";
-import SportThumbnail from "./WebPhotos/SportThumbnail.png";
-import SwedishThumbnail from "./WebPhotos/SwedishThumbnail.png";
-import DeepTissueThumbnail from "./WebPhotos/DeepTissueThumbnail.png";
-import ThirtyMinute from "./WebPhotos/ThirtyMinute.png";
+import AppContext from "./context/appContext";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useNavigate,
+} from "react-router-dom";
 
-import { useNavigate } from "react-router-dom";
-import { scrollToSection } from "./context/AppState";
+import servicesImage from "./Photos/services.jpeg";
+import ServiceCard from "./ServicesCards";
+import { mainColors } from "./themecolors";
+import MyButton from "./CustomButton";
+import { NavPages } from "./utils/navigation";
 
-export const Services = () => {
-  const navigate = useNavigate();
+const servicesArr = [
+  "Professional DJ/MC packages",
+  "Photo Packages",
+  "Uplighting",
+];
+
+const Services = () => {
   const appContext = useContext(AppContext);
-  const { horizontalPadding, connectSection } = appContext;
+  const { mobile } = appContext;
+  const navigate = useNavigate();
 
-  function bookMassage() {
-    navigate(`/`);
-    scrollToSection(connectSection.sectionPostion);
-    //  window.open("https://pocketsuite.io/book/keke-jones");
-  }
-  const servicesArr = [
-    {
-      image: SportThumbnail,
-
-      title: "Prenatal Massage",
-      priceText: "Starting at $80",
-    },
-    {
-      image: SwedishThumbnail,
-      title: "Relaxation Massage",
-      priceText: "Starting at $100",
-    },
-
-    {
-      image: DeepTissueThumbnail,
-      title: "Deep Tissue Massage",
-      priceText: "Starting at $160",
-    },
-    {
-      image: ThirtyMinute,
-      title: "Couples Massage",
-      priceText: "Starting at $220",
-    },
-  ];
-
-  function showServices() {
-    return servicesArr.map((service) => {
-      const { image, title, priceText } = service;
-      return (
-        <Grid item container xs={12} md={3}>
-          <MyCard
-            priceText={priceText}
-            image={image}
-            title={title}
-            onClick={bookMassage}
-          />
-        </Grid>
-      );
-    });
+  function navigateToContact() {
+    navigate(NavPages.contact);
   }
   return (
     <Grid
@@ -67,28 +36,68 @@ export const Services = () => {
       xs={12}
       style={{
         paddingTop: 24,
-        paddingBottom: 56,
-
         flex: 1,
       }}
-      // justifyContent={mediumScreen ? "space-evenly" : "space-evenly"}
     >
-      <Grid item xs={12}>
-        <h1 style={{ textAlign: "center" }}>Services</h1>
-      </Grid>
       <Grid
+        name="purpose div"
         item
         container
         xs={12}
-        spacing={4}
+        alignItems="flex-start"
         justifyContent={"space-between"}
-        style={{
-          paddingTop: 24,
-          paddingLeft: horizontalPadding,
-          paddingRight: horizontalPadding,
-        }}
+        style={{ height: "40%", paddingTop: 24 }}
       >
-        {showServices()}
+        <Grid item container xs={12} md={5} justifyContent={"flex-start"}>
+          <Grid item>
+            <h1
+              style={{
+                textAlign: mobile ? "center" : "left",
+                marginTop: mobile ? 32 : 0,
+                color: mainColors.white,
+              }}
+            >
+              Services
+            </h1>
+          </Grid>
+
+          <Grid item container xs={12} spacing={1} style={{ marginTop: 16 }}>
+            {servicesArr.map((service) => {
+              return <ServiceCard title={service} />;
+            })}
+          </Grid>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: mobile ? "center" : undefined,
+              width: "100%",
+            }}
+          >
+            <MyButton
+              onClick={navigateToContact}
+              buttonStyle={{
+                marginTop: 32,
+              }}
+            />
+          </div>
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          md={5}
+          style={{ height: "100%", marginTop: mobile ? 32 : 0 }}
+        >
+          <img
+            src={servicesImage}
+            // className="dualpics"
+            alt="the dj"
+            style={{
+              width: "100%",
+              height: "100%",
+              // height: mediumScreen ? "85%" : "55%",
+            }}
+          />
+        </Grid>
       </Grid>
     </Grid>
   );

@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import AppContext from "./context/appContext";
 import { Grid } from "@mui/material";
+import { mainColors } from "./themecolors";
 
 const themeColors = {
   homeRed: "rgba(161, 8, 59,1)",
@@ -21,7 +22,7 @@ export const Disclaimer = () => {
         paddingTop: 24,
         paddingBottom: 56,
         flex: 1,
-        backgroundColor: themeColors.homePurple,
+        backgroundColor: themeColors.white,
         paddingLeft: horizontalPadding,
         paddingRight: horizontalPadding,
       }}
@@ -29,14 +30,14 @@ export const Disclaimer = () => {
     >
       <h3
         style={{
-          color: "white",
+          color: mainColors.white,
         }}
       >
         Cancellation & Rescheduling Policy
       </h3>
       <p
         style={{
-          color: "white",
+          color: mainColors.white,
           marginTop: 24,
           marginLeft: 0,
         }}
@@ -55,10 +56,10 @@ export const Disclaimer = () => {
           height: 1,
           width: "100%",
           marginTop: 32,
-          backgroundColor: "#fff",
+          backgroundColor: mainColors.black,
         }}
       ></div>
-      <h3 style={{ marginTop: 24, color: "#fff" }}>
+      <h3 style={{ marginTop: 24, color: mainColors.white }}>
         ©2022 Home Therapy, LLC. All rights reserved.
       </h3>
     </Grid>

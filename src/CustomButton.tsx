@@ -1,16 +1,5 @@
 import React, { useState } from "react";
-
-interface Props {
-  border: string;
-  color: string;
-  children?: React.ReactNode;
-  height: string;
-  onClick: () => void;
-  radius: string;
-  width: string;
-  buttonStyle: object;
-}
-
+import { mainColors } from "./themecolors";
 interface ButtonProps {
   onClick: () => void;
   children?: React.ReactNode;
@@ -19,6 +8,7 @@ interface ButtonProps {
   hoverEffect?: Boolean | false;
   raised?: Boolean | undefined;
   backgroundColor?: string; //used for hover effect,
+  hoveredTextColor?: string; //used for hover effect,
 }
 
 const MyButton: React.FC<ButtonProps> = ({
@@ -29,6 +19,7 @@ const MyButton: React.FC<ButtonProps> = ({
   raised,
   hoverEffect,
   backgroundColor,
+  hoveredTextColor,
 }) => {
   const raisedObj = raised ? dropShadow : {};
   const [hovered, setHovered] = useState({});
@@ -42,7 +33,8 @@ const MyButton: React.FC<ButtonProps> = ({
       }`,
     });
     setTextHoveredColor({
-      color: backgroundColor || defaultButtonStyle.backgroundColor,
+      color: hoveredTextColor || defaultButtonTextStyle.color,
+      //   borderColor: hoveredTextColor || defaultButtonTextStyle.color,
     });
   }
 
@@ -70,7 +62,7 @@ const MyButton: React.FC<ButtonProps> = ({
           ...textHoveredColor,
         }}
       >
-        {children}
+        {children ?? "Book event"}
       </p>
     </button>
   );
@@ -79,18 +71,12 @@ const MyButton: React.FC<ButtonProps> = ({
 const dropShadow = {
   boxShadow: "1px 10px 13px -3px rgba(0,0,0,0.26)",
 };
-const buttonColors = {
-  homeRed: "rgba(161, 8, 59,1)",
-  homeDarkOrange: "rgba(247, 188, 0,1)",
-  homeLightOrange: "rgba(249, 147, 1,1)",
-  homeYellowOrange: "rgba(247, 188, 0,1)",
-  homePurple: "rgba(84, 23, 67,1)",
-};
+
 const defaultButtonStyle = {
   display: "flex",
-  backgroundColor: buttonColors.homeLightOrange,
+  backgroundColor: mainColors.gold,
   border: "none",
-  borderRadius: "none",
+  borderRadius: 10,
   height: 50,
   width: 156,
   padding: 16,
@@ -101,7 +87,8 @@ const defaultButtonStyle = {
 
 const defaultButtonTextStyle = {
   fontSize: 20,
-  color: "#ffffff",
+  color: mainColors.black,
+  fontWeight: "bold",
 };
 
 export default MyButton;

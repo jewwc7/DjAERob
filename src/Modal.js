@@ -3,6 +3,7 @@ import AppContext from "./context/appContext";
 
 import { Drawer, Button, List, ListItem } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { NavPages } from "./utils/navigation";
 const Modal = ({ setOutline }) => {
   const appContext = useContext(AppContext);
   const { modalVisible, setModalVisible } = appContext;
@@ -52,11 +53,11 @@ const Modal = ({ setOutline }) => {
             button
             divider
             onClick={() => {
-              goToPage("/services");
+              goToPage("/");
               setTimeout(() => {
                 window.scrollTo({
                   //this is how you scroll to bottom of page, used timeout so the new pages coordinates can be used(w/o timeout will scroll as far as prior page went down)
-                  top: 0,
+                  top: 1600,
                   behavior: "smooth",
                 });
               }, 200);
@@ -70,24 +71,8 @@ const Modal = ({ setOutline }) => {
             button
             divider
             onClick={() => {
-              goToPage("/");
-              setTimeout(() => {
-                window.scrollTo({
-                  //this is how you scroll to bottom of page, used timeout so the new pages coordinates can be used(w/o timeout will scroll as far as prior page went down)
-                  top: 3200,
-                  behavior: "smooth",
-                });
-              }, 200);
-            }}
-            style={styles.linkText}
-          >
-            Therapist
-          </ListItem>
-          <ListItem
-            button
-            divider
-            onClick={() => {
-              goToPage("/");
+              goToPage(NavPages.contact);
+
               setTimeout(() => {
                 window.scrollTo({
                   //this is how you scroll to bottom of page, used timeout so the new pages coordinates can be used(w/o timeout will scroll as far as prior page went down)
@@ -100,7 +85,7 @@ const Modal = ({ setOutline }) => {
             }}
             style={styles.linkText}
           >
-            Connect
+            Contact
           </ListItem>
         </List>
       </div>

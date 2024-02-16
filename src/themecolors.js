@@ -4,4 +4,7 @@ export const mainColors = {
   homeLightOrange: "rgba(249, 147, 1,1)",
   homeYellowOrange: "rgba(247, 188, 0,1)",
   homePurple: "rgba(84, 23, 67,1)",
+  black: "rgb(1,9,12)", //"#151515",
+  white: "white",
+  gold: "gold",
 };

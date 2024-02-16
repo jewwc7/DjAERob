@@ -12,8 +12,10 @@ import {
 import AppContext from "./context/appContext";
 import Modal from "./Modal";
 import MyButton from "./CustomButton";
-import logo from "./Photography/HTherapylogo.png";
+import logo from "./Photos/logo.jpg";
 import { scrollToSection } from "./context/AppState";
+import { mainColors } from "./themecolors";
+import { NavPages } from "./utils/navigation";
 const themeColors = {
   homeRed: "rgba(161, 8, 59,1)",
   homeDarkOrange: "rgba(247, 188, 0,1)",
@@ -30,22 +32,17 @@ export const navButtonArr = [
     specialHighlight: themeColors.homePurple,
   },
   {
-    title: "Services",
-    sectionPostion: 0,
-    page: "services",
-    specialHighlight: themeColors.homePurple,
-  },
-  {
-    title: "Therapist",
+    title: "Gallery",
     sectionPostion: 1800,
     isScroll: true,
     specialHighlight: themeColors.homePurple,
   },
   {
-    title: "Connect",
+    title: "Contact",
     sectionPostion: 2400, //document.body.scrollHeight, //this is how you scroll to bottom of page, used timeout so the new pages coordinates can be used(w/o timeout will scroll as far as prior page went down)
-    isScroll: true,
+    isScroll: false,
     specialHighlight: themeColors.homePurple,
+    page: NavPages.contact,
   },
 ];
 
@@ -75,11 +72,11 @@ const TopNav = ({ mobile, tablet, desktop, laptop }) => {
 
   function displayNavBtns() {
     return navButtonArr.map((btn, index) => {
-      const { title, sectionPostion, isScroll, page, specialHighlight } = btn;
+      const { title, sectionPostion, isScroll, page } = btn;
       function highlightGoToPage() {
         if (!page) return alert("Need to input a page to navigate to");
         setOutline(index);
-        navigate(`/${page}`);
+        navigate(page);
         scrollToSection(sectionPostion);
       }
 
@@ -89,27 +86,21 @@ const TopNav = ({ mobile, tablet, desktop, laptop }) => {
 
         scrollToSection(sectionPostion);
       }
-      //  const borderShown = outline
+
       return (
         <MyButton
           children={title}
           hoverEffect
-          backgroundColor={themeColors.homePurple}
+          backgroundColor={mainColors.black}
+          hoveredTextColor={mainColors.black}
           buttonStyle={{
             backgroundColor: "rgba(255,255,255,0)",
             border:
-              outline === index
-                ? `1px solid ${
-                    specialHighlight || themeColors.homeYellowOrange
-                  }`
-                : `none`,
+              outline === index ? `1px solid ${mainColors.black}` : `none`,
             boxShadow: "none",
           }}
           textStyle={{
-            color:
-              outline === index
-                ? specialHighlight || themeColors.homeYellowOrange
-                : themeColors.homeRed,
+            color: mainColors.white,
             fontWeight: "200",
           }}
           onClick={isScroll ? highlightScroll : highlightGoToPage}
@@ -125,7 +116,7 @@ const TopNav = ({ mobile, tablet, desktop, laptop }) => {
       style={{
         height: 80,
         alignItems: "center",
-        backgroundColor: "#fff",
+        backgroundColor: mainColors.black,
         paddingLeft: horizontalPadding,
         paddingRight: horizontalPadding,
         zIndex: 100,
@@ -155,11 +146,7 @@ const TopNav = ({ mobile, tablet, desktop, laptop }) => {
           }, 500);
         }}
       >
-        <img
-          src={logo}
-          alt="logo"
-          style={{ height: "100%", width: "100%" }}
-        ></img>
+        <img src={logo} alt="logo" style={{ height: 60, width: 100 }}></img>
       </Grid>
       <Grid
         item
@@ -179,22 +166,6 @@ const TopNav = ({ mobile, tablet, desktop, laptop }) => {
       <Modal />
     </Grid>
   );
-};
-
-const styles = {
-  mainContainer: {
-    width: "100%",
-    height: 100,
-    display: "flex",
-    //   backgroundColor: '#3f0d12',
-    //  backgroundImage: 'linear-gradient(315deg, #3f0d12 0%, #a71d31 74%)',
-    backgroundColor: "rgba(250,250,50,1)",
-    // flex: 1,
-  },
-  link: {
-    textDecoration: "none",
-    color: "black",
-  },
 };
 
 export default TopNav;

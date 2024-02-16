@@ -4,32 +4,22 @@ import { Grid, Hidden } from "@mui/material";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import MobileReviews from "./MobileReviews";
+import contactImage from "./Photos/contact.jpeg";
+import { mainColors } from "./themecolors";
+import { NavPages } from "./utils/navigation";
+import { useNavigate } from "react-router-dom";
+import MyButton from "./CustomButton";
+import { reviewArr } from "./reviewsText";
 
-const themeColors = {
-  homeRed: "rgba(161, 8, 59,1)",
-  homeDarkOrange: "rgba(247, 188, 0,1)",
-  homeLightOrange: "rgba(249, 147, 1,1)",
-  homeYellowOrange: "rgba(247, 188, 0,1)",
-  homePurple: "rgba(84, 23, 67,1)",
-};
 export const Reviews = () => {
   const appContext = useContext(AppContext);
-  const { horizontalPadding } = appContext;
+  const { horizontalPadding, mobile } = appContext;
+  const navigate = useNavigate();
 
-  const reviewArr = [
-    {
-      reviewer: "Johnny",
-      body: "I had a deep tissue full body massage with Keala, and she did an AMAZING job getting the knots out of my back. I've had this tightness in my legs and upper back for the longest time but she managed to iron it all out.",
-    },
-    {
-      reviewer: "Quin",
-      body: "The quality of the massage is wonderful better than more known places. Very affordable prices. Highly recommend. ",
-    },
-    {
-      reviewer: "Jackie",
-      body: "Great prices and the massages are magical. First massage therapist that actually made me feel relaxed. I go every time I'm in Kansas City",
-    },
-  ];
+  function navigateToContact() {
+    navigate(NavPages.contact);
+  }
+
   const [currentReview, setCurrentReview] = useState(0);
   function goToNext() {
     const lengthOfReviews = reviewArr.length - 1;
@@ -42,31 +32,54 @@ export const Reviews = () => {
   }
   function showReviews() {
     return (
-      <div style={{ display: "flex", flexDirection: "row" }}>
+      <div style={{ minHeight: 120, marginTop: 16 }}>
         <div
           style={{
-            color: themeColors.homePurple,
-            fontSize: 60,
-            fontFamily: "ReinaNeue-Heavy",
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
           }}
         >
-          "
-        </div>
-
-        <div>
-          <p style={{ textAlign: "center" }}>{reviewArr[currentReview].body}</p>
-          <p style={{ textAlign: "center", fontStyle: "italic" }}>
-            -- {reviewArr[currentReview].reviewer}
-          </p>
-        </div>
-        <div
-          style={{
-            color: themeColors.homePurple,
-            fontSize: 60,
-            fontFamily: "ReinaNeue-Heavy",
-          }}
-        >
-          "
+          <ArrowBackIosNewIcon
+            sx={{
+              color: mainColors.gold,
+              fontSize: 20,
+              cursor: "pointer",
+            }}
+            onClick={goBack}
+          />
+          <div
+            style={{
+              paddingLeft: 16,
+              paddingRight: 16,
+              width: "70%",
+            }}
+          >
+            <p
+              style={{ textAlign: "center", color: mainColors.black }}
+              className="reviewP"
+            >
+              {reviewArr[currentReview].body}
+            </p>
+            <p
+              style={{
+                textAlign: "center",
+                color: mainColors.black,
+                fontStyle: "italic",
+              }}
+              className="reviewP"
+            >
+              -- {reviewArr[currentReview].reviewer}
+            </p>
+          </div>
+          <ArrowForwardIosIcon
+            sx={{
+              color: mainColors.gold,
+              fontSize: 20,
+              cursor: "pointer",
+            }}
+            onClick={goToNext}
+          />
         </div>
       </div>
     );
@@ -79,46 +92,49 @@ export const Reviews = () => {
       style={{
         paddingTop: 24,
         paddingBottom: 56,
-        paddingLeft: horizontalPadding,
-        paddingRight: horizontalPadding,
+        justifyContent: "space-between",
         flex: 1,
       }}
-      alignItems="space-between"
+      alignItems="flex-start"
     >
       <Hidden mdDown>
-        <Grid item container xs={3} alignItems="center">
-          <Grid item xs={12} container justifyContent="flex-start">
-            <ArrowBackIosNewIcon
-              sx={{
-                color: themeColors.homeRed,
-                fontSize: 40,
-                cursor: "pointer",
-              }}
-              onClick={goBack}
-            />
-          </Grid>
+        <Grid item xs={12} md={5} style={{ height: 600 }}>
+          <img
+            src={contactImage}
+            // className="dualpics"
+            alt="the dj"
+            style={{
+              width: "100%",
+              height: "100%",
+              // height: mediumScreen ? "85%" : "55%",
+            }}
+          />
         </Grid>
-        <Grid item container xs={6} alignItems="center" justifyContent="center">
-          {showReviews()}
-        </Grid>
-
         <Grid
           item
           container
-          xs={3}
-          justifyContent="flex-end"
-          alignItems="center"
+          style={{ height: "80%" }}
+          xs={12}
+          md={5}
+          justifyContent={"flex-start"}
+          direction={"column"}
         >
-          <Grid item container xs={12} justifyContent="flex-end">
-            <ArrowForwardIosIcon
-              sx={{
-                color: themeColors.homeRed,
-                fontSize: 40,
-                cursor: "pointer",
+          <Grid item style={{}}>
+            <h1
+              style={{
+                textAlign: mobile ? "center" : "left",
+                marginTop: mobile ? 32 : 0,
+                color: mainColors.black,
               }}
-              onClick={goToNext}
-            />
+            >
+              Reviews
+            </h1>
           </Grid>
+          {showReviews()}
+          <MyButton
+            onClick={navigateToContact}
+            //   buttonStyle={{ marginTop: 80 }}
+          />
         </Grid>
       </Hidden>
       <Hidden mdUp>
