@@ -2,18 +2,13 @@ import React, { useContext } from "react";
 import "./App.css";
 import { Grid } from "@mui/material";
 import AppContext from "./context/appContext";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  useNavigate,
-} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import servicesImage from "./Photos/services.jpeg";
 import ServiceCard from "./ServicesCards";
-import { mainColors } from "./themecolors";
 import MyButton from "./CustomButton";
 import { NavPages } from "./utils/navigation";
+import { SECTION_PADDING_TOP } from "./constants";
 
 const servicesArr = [
   "Professional DJ/MC packages",
@@ -35,12 +30,12 @@ const Services = () => {
       container
       xs={12}
       style={{
-        paddingTop: 24,
+        paddingTop: SECTION_PADDING_TOP,
         flex: 1,
       }}
     >
       <Grid
-        name="purpose div"
+        name="services"
         item
         container
         xs={12}
@@ -54,7 +49,6 @@ const Services = () => {
               style={{
                 textAlign: mobile ? "center" : "left",
                 marginTop: mobile ? 32 : 0,
-                color: mainColors.white,
               }}
             >
               Services

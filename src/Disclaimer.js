@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import AppContext from "./context/appContext";
 import { Grid } from "@mui/material";
 import { mainColors } from "./themecolors";
+import { SECTION_PADDING_TOP } from "./constants";
 
 const themeColors = {
   homeRed: "rgba(161, 8, 59,1)",
@@ -19,7 +20,7 @@ export const Disclaimer = () => {
       container
       xs={12}
       style={{
-        paddingTop: 24,
+        paddingTop: SECTION_PADDING_TOP + 100,
         paddingBottom: 56,
         flex: 1,
         backgroundColor: themeColors.white,

@@ -1,4 +1,4 @@
-import React, { useState, useReducer, useEffect } from "react";
+import React, { useState } from "react";
 import AppContext from "./appContext";
 
 import { useMediaQuery, createTheme } from "@mui/material";
@@ -42,35 +42,14 @@ const AppState = (props) => {
   const connectSection = navButtonArr[navButtonArr.length - 1];
 
   const [modalVisible, setModalVisible] = useState(false);
-  const [statusbar, setStatusbar] = useState({ offset: 1000, message: null }); //600 will ensure off the screen no matter the device
-  const [scrolling, setScrolling] = useState(null);
-  const [highlight, setHighlight] = useState({ value: null });
   const [outline, setOutline] = useState({ home: true });
-  const initialState = {};
-
-  //const searchMatches = currentState.allProducts.filter(product => product.style.includes(text))
-
-  const [currentState, dispatch] = useReducer(reducer, initialState); //initial state is an object in this case
-
-  function reducer(currentState, action) {
-    //console.log('I am the payload:' , action.payload)
-    switch (action.type) {
-      case "Select Massage": //Cannot use use State within the reducer. UseState value will not be updated due to async*review comments
-        return currentState;
-
-      default:
-        return currentState;
-    }
-  }
 
   //add state for showing/hiding modal
   return (
     <AppContext.Provider
       value={{
-        currentState, //passing the current state in as value.
         modalVisible,
         setModalVisible,
-        dispatch,
         mobile,
         tablet,
         largeTablet,

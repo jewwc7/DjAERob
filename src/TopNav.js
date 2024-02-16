@@ -1,18 +1,11 @@
 import React, { useState, useContext, useEffect } from "react";
-//import Modal from "./Modal";
-import { Grid, Button, IconButton, Paper, Hidden } from "@mui/material";
-//import { makeStyles } from "@mui/material/styles";
+import { Grid, IconButton, Hidden } from "@mui/material";
 import DehazeIcon from "@mui/icons-material/Dehaze";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  useNavigate,
-} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import AppContext from "./context/appContext";
 import Modal from "./Modal";
 import MyButton from "./CustomButton";
-import logo from "./Photos/logo.jpg";
+import logo from "./Photos/logo.png";
 import { scrollToSection } from "./context/AppState";
 import { mainColors } from "./themecolors";
 import { NavPages } from "./utils/navigation";
@@ -46,7 +39,7 @@ export const navButtonArr = [
   },
 ];
 
-const TopNav = ({ mobile, tablet, desktop, laptop }) => {
+const TopNav = () => {
   const [stickyClass, setStickyClass] = useState("");
   const appContext = useContext(AppContext);
   const {
@@ -159,7 +152,10 @@ const TopNav = ({ mobile, tablet, desktop, laptop }) => {
         <Hidden mdDown>{displayNavBtns()}</Hidden>
         <Hidden mdUp>
           <IconButton>
-            <DehazeIcon onClick={() => setModalVisible(!modalVisible)} />
+            <DehazeIcon
+              onClick={() => setModalVisible(!modalVisible)}
+              style={{ color: mainColors.white }}
+            />
           </IconButton>
         </Hidden>
       </Grid>

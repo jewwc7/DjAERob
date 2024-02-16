@@ -10,10 +10,11 @@ import { NavPages } from "./utils/navigation";
 import { useNavigate } from "react-router-dom";
 import MyButton from "./CustomButton";
 import { reviewArr } from "./reviewsText";
+import { SECTION_PADDING_TOP } from "./constants";
 
 export const Reviews = () => {
   const appContext = useContext(AppContext);
-  const { horizontalPadding, mobile } = appContext;
+  const { mobile } = appContext;
   const navigate = useNavigate();
 
   function navigateToContact() {
@@ -55,16 +56,12 @@ export const Reviews = () => {
               width: "70%",
             }}
           >
-            <p
-              style={{ textAlign: "center", color: mainColors.black }}
-              className="reviewP"
-            >
+            <p style={{ textAlign: "center" }} className="reviewP">
               {reviewArr[currentReview].body}
             </p>
             <p
               style={{
                 textAlign: "center",
-                color: mainColors.black,
                 fontStyle: "italic",
               }}
               className="reviewP"
@@ -90,8 +87,7 @@ export const Reviews = () => {
       container
       xs={12}
       style={{
-        paddingTop: 24,
-        paddingBottom: 56,
+        paddingTop: SECTION_PADDING_TOP,
         justifyContent: "space-between",
         flex: 1,
       }}
@@ -124,7 +120,6 @@ export const Reviews = () => {
               style={{
                 textAlign: mobile ? "center" : "left",
                 marginTop: mobile ? 32 : 0,
-                color: mainColors.black,
               }}
             >
               Reviews

@@ -4,16 +4,14 @@
   padding: 0;
 }
 .App {
-  background-color: #fff;
   display: flex;
   flex: 1;
   position: relative;
-
   flex-direction: column;
-  color: white;
+  color: #fff;
 }
 p {
-  color: #151515;
+  color: #fff;
   font-size: 24px;
   line-height: 1.5;
   font-weight: 300;
@@ -31,7 +29,7 @@ h1 {
 }
 
 .reviewP {
-  color: #151515;
+  color: #fff;
   font-size: 18px;
   line-height: 1.5;
   font-weight: 300;

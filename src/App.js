@@ -15,17 +15,12 @@ import Reviews from "./Reviews";
 import Disclaimer from "./Disclaimer";
 import TopNav from "./TopNav";
 import heroImage from "./Photos/header.jpeg";
-import purposeImage from "./Photos/purpose.jpeg";
-import MediaSection from "./MediaSection";
 import Services from "./Services";
 import { NavPages } from "./utils/navigation";
-import MyButton from "./CustomButton";
 import PurposeAndMission from "./PurposeAndMissionSection";
 
 //TODO
 //Delete WEbPhotos and photography FOlder
-
-const Section_Margin_TOP = 64;
 function AppWrapper() {
   return (
     <AppState>
@@ -50,7 +45,7 @@ function App() {
 
 const HomeScreen = () => {
   const appContext = useContext(AppContext);
-  const { mobile, horizontalPadding } = appContext;
+  const { horizontalPadding } = appContext;
   return (
     <Grid style={{ flex: 1, position: "relative" }}>
       <div style={{ height: 500 }}>
@@ -66,6 +61,7 @@ const HomeScreen = () => {
             flex: 1,
             paddingLeft: horizontalPadding,
             paddingRight: horizontalPadding,
+            backgroundColor: mainColors.black,
           }}
         >
           <PurposeAndMission />
@@ -74,7 +70,6 @@ const HomeScreen = () => {
           style={{
             flex: 1,
             backgroundColor: mainColors.black,
-            marginTop: Section_Margin_TOP,
             paddingLeft: horizontalPadding,
             paddingRight: horizontalPadding,
           }}
@@ -96,9 +91,9 @@ const HomeScreen = () => {
         <div
           style={{
             flex: 1,
-            marginTop: Section_Margin_TOP,
             paddingLeft: horizontalPadding,
             paddingRight: horizontalPadding,
+            backgroundColor: mainColors.black,
           }}
         >
           <Reviews />
@@ -117,13 +112,6 @@ const HomeScreen = () => {
 };
 
 const Hero = () => {
-  const appContext = useContext(AppContext);
-  const { connectSection } = appContext;
-  const navigate = useNavigate();
-  function bookMassage() {
-    navigate(`/`);
-    scrollToSection(connectSection.sectionPostion);
-  }
   return (
     <Grid
       item

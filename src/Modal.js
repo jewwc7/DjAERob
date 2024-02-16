@@ -1,10 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import AppContext from "./context/appContext";
 
 import { Drawer, Button, List, ListItem } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { NavPages } from "./utils/navigation";
-const Modal = ({ setOutline }) => {
+const Modal = () => {
   const appContext = useContext(AppContext);
   const { modalVisible, setModalVisible } = appContext;
   const navigate = useNavigate();

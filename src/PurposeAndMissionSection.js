@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import purposeImage from "./Photos/purpose.jpeg";
 import { NavPages } from "./utils/navigation";
 import MyButton from "./CustomButton";
-import { mainColors } from "./themecolors";
+import { SECTION_PADDING_TOP } from "./constants";
 
 //TODO
 //Delete WEbPhotos and photography FOlder
@@ -26,7 +26,7 @@ const PurposeAndMission = () => {
       container
       xs={12}
       style={{
-        paddingTop: 24,
+        paddingTop: SECTION_PADDING_TOP,
         flex: 1,
       }}
       // justifyContent={mediumScreen ? "space-evenly" : "space-evenly"}
@@ -58,14 +58,12 @@ const PurposeAndMission = () => {
               style={{
                 textAlign: mobile ? "center" : "left",
                 marginTop: mobile ? 32 : 0,
-                color: mainColors.black,
               }}
             >
               About Me
             </h1>
             <p
               style={{
-                color: "#151515",
                 marginTop: 4,
                 width: mobile ? "100%" : "80%",
                 textAlign: mobile ? "center" : "left",

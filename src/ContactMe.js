@@ -67,7 +67,13 @@ export const ContactMe = () => {
   }
 
   return (
-    <div style={{ flex: 1, backgroundColor: mainColors.black }}>
+    <div
+      style={{
+        flex: 1,
+        backgroundColor: mainColors.black,
+        position: "relative",
+      }}
+    >
       <Grid
         item
         container
@@ -78,7 +84,6 @@ export const ContactMe = () => {
           paddingLeft: horizontalPadding,
           paddingRight: horizontalPadding,
           flex: 1,
-          backgroundColor: mainColors.black,
         }}
         // justifyContent={mediumScreen ? "space-evenly" : "space-evenly"}
       >
