@@ -61,7 +61,7 @@ export const Disclaimer = () => {
         }}
       ></div>
       <h3 style={{ marginTop: 24, color: mainColors.white }}>
-        ©2022 Home Therapy, LLC. All rights reserved.
+        ©2024 RefreshKC, LLC. All rights reserved.
       </h3>
     </Grid>
   );

@@ -5,16 +5,12 @@ import AppContext from "./context/appContext";
 import { useNavigate } from "react-router-dom";
 
 import servicesImage from "./Photos/services.jpeg";
-import ServiceCard from "./ServicesCards";
+import ServiceCard, { Extras } from "./ServicesCards";
 import MyButton from "./CustomButton";
 import { NavPages } from "./utils/navigation";
 import { SECTION_PADDING_TOP } from "./constants";
-
-const servicesArr = [
-  "Professional DJ/MC packages",
-  "Photo Packages",
-  "Uplighting",
-];
+import { extrasArr, serviceArr } from "./data";
+import { mainColors } from "./themecolors";
 
 const Services = () => {
   const appContext = useContext(AppContext);
@@ -56,24 +52,20 @@ const Services = () => {
           </Grid>
 
           <Grid item container xs={12} spacing={1} style={{ marginTop: 16 }}>
-            {servicesArr.map((service) => {
-              return <ServiceCard title={service} />;
+            {serviceArr.map((service) => {
+              return <ServiceCard service={service} key={service.title} />;
             })}
           </Grid>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: mobile ? "center" : undefined,
-              width: "100%",
-            }}
-          >
-            <MyButton
-              onClick={navigateToContact}
-              buttonStyle={{
-                marginTop: 32,
-              }}
-            />
-          </div>
+          <Grid item container xs={12} spacing={1} style={{ marginTop: 16 }}>
+            <h2
+              style={{ color: mainColors.white, marginTop: 8, marginBottom: 8 }}
+            >
+              Items can be added to your EXPERIENCE!!!!!
+            </h2>
+            {extrasArr.map((extra) => {
+              return <Extras extra={extra} key={extra.title} />;
+            })}
+          </Grid>
         </Grid>
         <Grid
           item

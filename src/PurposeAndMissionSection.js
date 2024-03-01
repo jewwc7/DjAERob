@@ -69,11 +69,16 @@ const PurposeAndMission = () => {
                 textAlign: mobile ? "center" : "left",
               }}
             >
-              The "Home" is a physical and mental space not just where you
-              reside physically, but mentally as well. In these spaces - one
-              looks for peace, love, serenity and security. A secure place to be
-              open and received. With H.O.M.E Therapy you will be treated with
-              the utmost respect and attention.
+              DJ Amazingly Entertaining Rob is a Dj that needs no introduction.
+              Hailing from Kansas City Missouri, he is a Dj that brings over a
+              decade of experience in curating sounds and hosting events of all
+              kinds. Being a versatile Dj, A.E. Rob is your go-to for any
+              occasion. Whether you’re looking for a club dj that keeps the
+              crowd moving, segue from ceremony to reception, or a mobile dj
+              that brings the vibes wherever you are, HE’S YOUR DJ. As he
+              proudly proclaims “when you need music think of me, THINK A.E.”.
+              Trust his expertise to elevate your event and keep your guests
+              moving all day and all night!
             </p>
             <div
               style={{
