@@ -27,15 +27,15 @@ const Gallery = ({}) => {
   //@ts-ignore : don't have context typed
   const { mobile } = appContext;
 
-  useEffect(() => {
-    const scrollToTop = () => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    };
-    scrollToTop();
-  }, []);
+  //   useEffect(() => {
+  //     const scrollToTop = () => {
+  //       window.scrollTo({
+  //         top: 0,
+  //         behavior: "smooth",
+  //       });
+  //     };
+  //     scrollToTop();
+  //   }, []);
 
   return (
     <Grid container style={{ backgroundColor: backgroundColorDark }}>

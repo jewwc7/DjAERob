@@ -26,7 +26,7 @@ export const navButtonArr = [
   },
   {
     title: "Gallery",
-    sectionPostion: 1800,
+    sectionPostion: 0,
     isScroll: false,
     specialHighlight: themeColors.homePurple,
     page: NavPages.gallery,
