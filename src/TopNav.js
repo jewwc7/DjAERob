@@ -27,8 +27,9 @@ export const navButtonArr = [
   {
     title: "Gallery",
     sectionPostion: 1800,
-    isScroll: true,
+    isScroll: false,
     specialHighlight: themeColors.homePurple,
+    page: NavPages.gallery,
   },
   {
     title: "Contact",
@@ -97,6 +98,7 @@ const TopNav = () => {
             fontWeight: "200",
           }}
           onClick={isScroll ? highlightScroll : highlightGoToPage}
+          key={btn.title}
         />
       );
     });

@@ -18,7 +18,7 @@ import heroImage from "./Photos/header.jpeg";
 import Services from "./Services";
 import { NavPages } from "./utils/navigation";
 import PurposeAndMission from "./PurposeAndMissionSection";
-
+import Gallery from "./Gallery";
 //TODO
 //Delete WEbPhotos and photography FOlder
 function AppWrapper() {
@@ -38,6 +38,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomeScreen />}></Route>
         <Route path={`${NavPages.contact}`} element={<ContactMe />}></Route>
+        <Route path={`${NavPages.gallery}`} element={<Gallery />}></Route>
       </Routes>
     </div>
   );

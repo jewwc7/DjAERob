@@ -2,12 +2,8 @@ import React, { useContext } from "react";
 import "./App.css";
 import { Grid } from "@mui/material";
 import AppContext from "./context/appContext";
-import { useNavigate } from "react-router-dom";
-
 import servicesImage from "./Photos/services.jpeg";
 import ServiceCard, { Extras } from "./ServicesCards";
-import MyButton from "./CustomButton";
-import { NavPages } from "./utils/navigation";
 import { SECTION_PADDING_TOP } from "./constants";
 import { extrasArr, serviceArr } from "./data";
 import { mainColors } from "./themecolors";
@@ -15,11 +11,7 @@ import { mainColors } from "./themecolors";
 const Services = () => {
   const appContext = useContext(AppContext);
   const { mobile } = appContext;
-  const navigate = useNavigate();
 
-  function navigateToContact() {
-    navigate(NavPages.contact);
-  }
   return (
     <Grid
       item
