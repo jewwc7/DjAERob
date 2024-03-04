@@ -62,9 +62,11 @@ const Services = () => {
             >
               Items can be added to your EXPERIENCE!!!!!
             </h2>
-            {extrasArr.map((extra) => {
-              return <Extras extra={extra} key={extra.title} />;
-            })}
+            <Grid container xs={12}>
+              {extrasArr.map((extra) => {
+                return <Extras extra={extra} key={extra.title} />;
+              })}
+            </Grid>
           </Grid>
         </Grid>
         <Grid

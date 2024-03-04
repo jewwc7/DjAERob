@@ -50,7 +50,7 @@ const HomeScreen = () => {
   const appContext = useContext(AppContext);
   const { horizontalPadding } = appContext;
   return (
-    <Grid style={{ flex: 1, position: "relative" }}>
+    <Grid style={{ flex: 1, position: "relative", maxWidth: "100%" }}>
       <div style={{ height: 500 }}>
         <Hero />
       </div>

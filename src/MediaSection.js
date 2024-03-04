@@ -135,6 +135,7 @@ const MediaSection = () => {
               style={{
                 marginTop: 16,
                 justifyContent: mobile ? "center" : "left",
+                flexDirection: mobile ? "inherit" : "column",
               }}
             >
               <p>Follow me: @DJAERob </p>
