@@ -15,7 +15,6 @@ const MediaSection = () => {
       container
       xs={12}
       style={{
-        paddingTop: 24,
         flex: 1,
       }}
     >
@@ -39,17 +38,23 @@ const MediaSection = () => {
           />
         </Grid>
         <Grid item container xs={12} md={5} justifyContent={"flex-start"}>
-          <Grid item>
+          <Grid
+            item
+            container
+            xs={12}
+            style={{
+              justifyContent: mobile ? "center" : "left",
+            }}
+          >
             <h1
               style={{
                 textAlign: mobile ? "center" : "left",
                 marginTop: mobile ? 32 : 0,
-                color: mainColors.black,
               }}
             >
               Media
             </h1>
-            <div style={{ flexDirection: "row" }}>
+            {/* <div style={{ flexDirection: "row" }}>
               <iframe
                 width="100%"
                 height="200" //default is 300
@@ -105,41 +110,113 @@ const MediaSection = () => {
                   Great Gatsby
                 </a>
               </div>
-            </div>
-
-            <div
-              name="social"
+            </div> */}
+            <Grid
+              item
+              container
+              xs={12}
               style={{
-                justifyContent: "center",
                 marginTop: 16,
+                justifyContent: mobile ? "center" : "left",
+              }}
+            >
+              <div>
+                <iframe
+                  width="auto"
+                  height="315"
+                  src="https://www.youtube.com/embed/9QqTRdjv14k"
+                ></iframe>
+              </div>
+            </Grid>
+            <Grid
+              item
+              container
+              xs={12}
+              style={{
+                marginTop: 16,
+                justifyContent: mobile ? "center" : "left",
               }}
             >
               <p>Follow me: @DJAERob </p>
-              <a href="https://www.instagram.com/djaerob">
-                <li style={styles.icons}>
-                  <Insta />
-                  Instagram
-                </li>
-              </a>
-              <a href="https://facebook.com/dj.a.e.rob/">
-                <li style={styles.icons}>
-                  <Facebook />
-                  Facebook
-                </li>
-              </a>
-              <a href="https://www.mixcloud.com/djaerob/">
-                <li style={styles.icons}>
-                  <PlayButton />
-                  Mixcloud
-                </li>
-              </a>
-              <a href="https://linktr.ee/Djaerob">
-                <li style={styles.icons}>
-                  <PlayButton />
-                  LinkTree
-                </li>
-              </a>
-            </div>
+              <Grid
+                item
+                container
+                xs={12}
+                md={8}
+                justifyContent="flex-start"
+                alignItems="center"
+              >
+                <Grid
+                  item
+                  xs={6}
+                  style={{ display: "flex", alignItems: "center" }}
+                >
+                  <a
+                    href="https://www.instagram.com/djaerob"
+                    style={styles.link}
+                  >
+                    <li style={styles.icons}>
+                      <Insta className="social-icons" alt="instagram profile" />
+                      Instagram
+                    </li>
+                  </a>
+                </Grid>
+                <Grid
+                  item
+                  xs={6}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    marginTop: 8,
+                  }}
+                >
+                  <a
+                    href="https://facebook.com/dj.a.e.rob/"
+                    style={styles.link}
+                  >
+                    <li style={styles.icons}>
+                      <Facebook />
+                      Facebook
+                    </li>
+                  </a>
+                </Grid>
+                <Grid
+                  item
+                  xs={6}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    marginTop: 8,
+                  }}
+                >
+                  <a
+                    href="https://www.mixcloud.com/djaerob/"
+                    style={styles.link}
+                  >
+                    <li style={styles.icons}>
+                      <PlayButton />
+                      Mixcloud
+                    </li>
+                  </a>
+                </Grid>
+                <Grid
+                  item
+                  xs={6}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    marginTop: 8,
+                  }}
+                >
+                  <a href="https://linktr.ee/Djaerob" style={styles.link}>
+                    <li style={styles.icons}>
+                      <PlayButton />
+                      LinkTree
+                    </li>
+                  </a>
+                </Grid>
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
@@ -172,6 +249,7 @@ const styles = {
     alignItems: "center",
     display: "flex",
     marginTop: 4,
+    color: mainColors.white,
   },
 };
 

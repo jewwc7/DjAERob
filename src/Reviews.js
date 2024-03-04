@@ -94,18 +94,6 @@ export const Reviews = () => {
       alignItems="flex-start"
     >
       <Hidden mdDown>
-        <Grid item xs={12} md={5} style={{ height: 600 }}>
-          <img
-            src={contactImage}
-            // className="dualpics"
-            alt="the dj"
-            style={{
-              width: "100%",
-              height: "100%",
-              // height: mediumScreen ? "85%" : "55%",
-            }}
-          />
-        </Grid>
         <Grid
           item
           container
@@ -129,6 +117,18 @@ export const Reviews = () => {
           <MyButton
             onClick={navigateToContact}
             //   buttonStyle={{ marginTop: 80 }}
+          />
+        </Grid>
+        <Grid item xs={12} md={5} style={{ height: 600 }}>
+          <img
+            src={contactImage}
+            // className="dualpics"
+            alt="the dj"
+            style={{
+              width: "100%",
+              height: "100%",
+              // height: mediumScreen ? "85%" : "55%",
+            }}
           />
         </Grid>
       </Hidden>

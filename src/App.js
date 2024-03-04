@@ -19,6 +19,8 @@ import Services from "./Services";
 import { NavPages } from "./utils/navigation";
 import PurposeAndMission from "./PurposeAndMissionSection";
 import Gallery from "./Gallery";
+import MediaSection from "./MediaSection";
+
 //TODO
 //Delete WEbPhotos and photography FOlder
 function AppWrapper() {
@@ -77,18 +79,19 @@ const HomeScreen = () => {
         >
           <Services />
         </div>
-        {/* 
-        when I add back, the reviews needs to go back to backgroundColor:black
+
+        {/* when I add back, the reviews needs to go back to backgroundColor:black */}
         <div
           style={{
             flex: 1,
-            marginTop: 32,
+            paddingTop: 32,
             paddingLeft: horizontalPadding,
             paddingRight: horizontalPadding,
+            backgroundColor: mainColors.black,
           }}
         >
           <MediaSection />
-        </div> */}
+        </div>
         <div
           style={{
             flex: 1,

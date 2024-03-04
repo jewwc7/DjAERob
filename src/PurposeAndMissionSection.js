@@ -66,19 +66,21 @@ const PurposeAndMission = () => {
               style={{
                 marginTop: 4,
                 width: mobile ? "100%" : "80%",
-                textAlign: mobile ? "center" : "left",
+                fontSize: 20,
               }}
             >
-              DJ Amazingly Entertaining Rob is a Dj that needs no introduction.
-              Hailing from Kansas City Missouri, he is a Dj that brings over a
-              decade of experience in curating sounds and hosting events of all
-              kinds. Being a versatile Dj, A.E. Rob is your go-to for any
-              occasion. Whether you’re looking for a club dj that keeps the
-              crowd moving, segue from ceremony to reception, or a mobile dj
-              that brings the vibes wherever you are, HE’S YOUR DJ. As he
-              proudly proclaims “when you need music think of me, THINK A.E.”.
-              Trust his expertise to elevate your event and keep your guests
-              moving all day and all night!
+              DJ Amazingly Entertaining Rob is a DJ who needs no introduction.
+              Hailing from Kansas City, Missouri, he brings over a decade of
+              experience in curating sounds and hosting events of all kinds.
+              Being a versatile DJ, A.E. Rob is your go-to for any occasion.
+              <br></br>
+              <br></br>
+              Whether you’re looking for a club DJ who keeps the crowd moving,
+              the perfect segue from ceremony to reception, or a mobile DJ who
+              brings the vibes wherever you are – he’s your DJ! As he proudly
+              proclaims, “When you need music, think of me – THINK A.E.” Trust
+              his expertise to elevate your event and keep your guests moving
+              all day and all night!
             </p>
             <div
               style={{

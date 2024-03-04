@@ -31,6 +31,14 @@ export const ContactMe = () => {
       .join("&");
   };
   function handleSubmit(e) {
+    if (!formData.name) {
+      alert("Name is required");
+      return;
+    }
+    if (!formData.email & !formData.phoneNumber) {
+      alert("Phone number or email is required");
+      return;
+    }
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -84,6 +92,7 @@ export const ContactMe = () => {
           paddingLeft: horizontalPadding,
           paddingRight: horizontalPadding,
           flex: 1,
+          flexDirection: mobile ? "column-reverse" : "row",
         }}
         // justifyContent={mediumScreen ? "space-evenly" : "space-evenly"}
       >
@@ -102,14 +111,12 @@ export const ContactMe = () => {
             md={8}
             justifyContent="flex-start"
             alignItems="center"
-
+            style={{
+              marginTop: mobile ? 32 : 0,
+            }}
             //  flexDirection={mobile ? "column-reverse" : "row"}
           >
-            <Grid
-              item
-              xs={12}
-              style={{ display: "flex", alignItems: "center" }}
-            >
+            <Grid item xs={6} style={{ display: "flex", alignItems: "center" }}>
               <a href="https://www.instagram.com/djaerob" style={styles.link}>
                 <li style={styles.icons}>
                   <Insta
@@ -125,7 +132,7 @@ export const ContactMe = () => {
             </Grid>
             <Grid
               item
-              xs={12}
+              xs={6}
               style={{ display: "flex", alignItems: "center", marginTop: 8 }}
             >
               <a href="https://facebook.com/dj.a.e.rob/" style={styles.link}>
@@ -137,7 +144,7 @@ export const ContactMe = () => {
             </Grid>
             <Grid
               item
-              xs={12}
+              xs={6}
               style={{ display: "flex", alignItems: "center", marginTop: 8 }}
             >
               <a href="https://www.mixcloud.com/djaerob/" style={styles.link}>
@@ -149,7 +156,7 @@ export const ContactMe = () => {
             </Grid>
             <Grid
               item
-              xs={12}
+              xs={6}
               style={{ display: "flex", alignItems: "center", marginTop: 8 }}
             >
               <a href="https://linktr.ee/Djaerob" style={styles.link}>
@@ -210,8 +217,6 @@ export const ContactMe = () => {
                     max: 10,
                   }}
                   type="number"
-                  placeholder="111-111-2345"
-                  mask
                 />
               </Grid>
               <Grid item xs={12} md={9}>

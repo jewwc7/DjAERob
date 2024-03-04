@@ -153,11 +153,8 @@ const TopNav = () => {
       >
         <Hidden mdDown>{displayNavBtns()}</Hidden>
         <Hidden mdUp>
-          <IconButton>
-            <DehazeIcon
-              onClick={() => setModalVisible(!modalVisible)}
-              style={{ color: mainColors.white }}
-            />
+          <IconButton onClick={() => setModalVisible(!modalVisible)}>
+            <DehazeIcon style={{ color: mainColors.white }} />
           </IconButton>
         </Hidden>
       </Grid>

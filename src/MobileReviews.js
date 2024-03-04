@@ -82,6 +82,7 @@ export const MobileReviews = () => {
             marginRight: 5,
             backgroundColor: onDotReview ? mainColors.gold : null,
           }}
+          key={index.toString()}
         ></Grid>
       );
     });

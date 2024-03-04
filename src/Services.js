@@ -31,7 +31,15 @@ const Services = () => {
         justifyContent={"space-between"}
         style={{ height: "40%", paddingTop: 24 }}
       >
-        <Grid item container xs={12} md={5} justifyContent={"flex-start"}>
+        <Grid
+          item
+          container
+          xs={12}
+          md={5}
+          style={{
+            justifyContent: mobile ? "center" : "flex-start",
+          }}
+        >
           <Grid item>
             <h1
               style={{
@@ -48,7 +56,7 @@ const Services = () => {
               return <ServiceCard service={service} key={service.title} />;
             })}
           </Grid>
-          <Grid item container xs={12} spacing={1} style={{ marginTop: 16 }}>
+          <Grid item container xs={12} style={{ marginTop: 16 }}>
             <h2
               style={{ color: mainColors.white, marginTop: 8, marginBottom: 8 }}
             >

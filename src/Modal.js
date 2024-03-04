@@ -53,35 +53,18 @@ const Modal = () => {
             button
             divider
             onClick={() => {
-              goToPage("/");
-              setTimeout(() => {
-                window.scrollTo({
-                  //this is how you scroll to bottom of page, used timeout so the new pages coordinates can be used(w/o timeout will scroll as far as prior page went down)
-                  top: 1600,
-                  behavior: "smooth",
-                });
-              }, 200);
+              goToPage(NavPages.gallery);
             }}
             style={styles.linkText}
           >
             {" "}
-            Services
+            Gallery
           </ListItem>
           <ListItem
             button
             divider
             onClick={() => {
               goToPage(NavPages.contact);
-
-              setTimeout(() => {
-                window.scrollTo({
-                  //this is how you scroll to bottom of page, used timeout so the new pages coordinates can be used(w/o timeout will scroll as far as prior page went down)
-                  // top: document.body.scrollHeight,
-                  top: 4800,
-
-                  behavior: "smooth",
-                });
-              }, 200);
             }}
             style={styles.linkText}
           >

@@ -38,7 +38,7 @@ export const galleryImages = [
   picEleven,
   picTwelve,
   picThirteen,
-  picFourteen,
+  // picFourteen, //has an issue
   picFifteen,
   picSixteen,
   picSeventeen,

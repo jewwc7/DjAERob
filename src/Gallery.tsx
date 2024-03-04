@@ -1,26 +1,10 @@
-import React, { useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import "./App.css";
 
-import {
-  Grid,
-  Paper,
-  Fade,
-  Slide,
-  makeStyles,
-  Card,
-  Collapse,
-  Grow,
-  ImageList,
-  ImageListItem,
-  ImageListItemBar,
-  Hidden,
-  Fab,
-} from "@mui/material";
+import { Grid, Grow, ImageList, ImageListItem, Fab } from "@mui/material";
 import AppContext from "./context/appContext";
 import { mainColors } from "./themecolors";
 import { galleryImages } from "./Photos/gallery/gallery";
-
-const backgroundColorDark = "rgba(215,215,215,0)"; //"#E8183A";
 
 const Gallery = ({}) => {
   const appContext = useContext(AppContext);
@@ -38,7 +22,7 @@ const Gallery = ({}) => {
   //   }, []);
 
   return (
-    <Grid container style={{ backgroundColor: backgroundColorDark }}>
+    <Grid container style={{ backgroundColor: mainColors.black }}>
       <Grid
         item
         container
@@ -48,7 +32,7 @@ const Gallery = ({}) => {
         style={{ marginTop: 32 }}
       >
         {/* <HammerIll /> */}
-        <h1 style={{ color: mainColors.black }}>Gallery</h1>
+        <h1>Gallery</h1>
       </Grid>
       <Grid
         item
@@ -122,23 +106,26 @@ const ImageGallery = ({}) => {
   ];
 
   return (
-    <Grid container md={12}>
+    <Grid container>
       <ImageList
         gap={10}
-        rowHeight={400}
+        // rowHeight={"auto"}
         component="div"
         cols={mobile ? 1 : tablet ? 2 : 3}
       >
         {photos.map((item, index) => {
           return (
-            <Grow in={true} timeout={fadeProps[index] ?? 0}>
+            <Grow
+              in={true}
+              timeout={fadeProps[index] ?? 0}
+              key={index.toString()}
+            >
               <ImageListItem
                 key={index}
                 //  cols={index === lastImage ? 1 : 1}
-                //  rows={index === 0 ? 2 : null}
-                className="dualpics"
+                //  rows={Pindex === 0 ? 2 : null}
               >
-                <img src={item} alt="name" style={{}} />
+                <img src={item} alt="name" style={{ objectFit: "contain" }} />
               </ImageListItem>
             </Grow>
           );

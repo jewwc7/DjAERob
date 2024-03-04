@@ -56,7 +56,7 @@ interface ExtraProps {
 export const Extras: React.FC<ExtraProps> = ({ extra }) => {
   const { title, cost } = extra;
   return (
-    <Grid item sm={6} xs={12} style={{}}>
+    <Grid item container sm={3.5} xs={6} style={{}}>
       <Paper
         className="nav-btns"
         style={{
@@ -70,7 +70,6 @@ export const Extras: React.FC<ExtraProps> = ({ extra }) => {
         <li style={{ color: mainColors.black, listStyleType: "none" }}>
           {title}
         </li>
-        <li style={{ color: mainColors.black }}>${cost}</li>
       </Paper>
     </Grid>
   );
