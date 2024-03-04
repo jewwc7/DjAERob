@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { mainColors } from "./themecolors";
 import { Grid, Paper } from "@mui/material";
 import { Extra, Services } from "./data";
 import MyButton from "./CustomButton";
 import { useNavigate } from "react-router-dom";
 import { NavPages } from "./utils/navigation";
+import AppContext from "./context/appContext";
 
 interface Props {
   service: Services;
@@ -13,8 +14,14 @@ interface Props {
 export const ServiceCard: React.FC<Props> = ({ service }) => {
   const { services, title, price, timeAvailable } = service;
   const navigate = useNavigate();
+  const appContext = useContext(AppContext);
+  //@ts-ignore
+  const { setCommentText } = appContext;
+
+  //@ts-ignore
 
   function navigateToContact() {
+    setCommentText(title);
     navigate(NavPages.contact);
   }
 
@@ -40,6 +47,7 @@ export const ServiceCard: React.FC<Props> = ({ service }) => {
           </ul>
         </div>
         <MyButton
+          //@ts-ignore
           onClick={navigateToContact}
           buttonStyle={{
             marginTop: 24,

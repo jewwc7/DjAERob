@@ -43,6 +43,7 @@ const AppState = (props) => {
 
   const [modalVisible, setModalVisible] = useState(false);
   const [outline, setOutline] = useState({ home: true });
+  const [commentText, setCommentText] = useState("");
 
   //add state for showing/hiding modal
   return (
@@ -60,6 +61,8 @@ const AppState = (props) => {
         horizontalPadding,
         scrollToSection,
         connectSection,
+        setCommentText,
+        commentText,
       }}
     >
       {props.children}

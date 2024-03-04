@@ -3,22 +3,19 @@ import AppContext from "./context/appContext";
 
 import MyButton from "./CustomButton";
 import { Grid, TextField } from "@mui/material";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import EmailIcon from "@mui/icons-material/Email";
-import PhoneIcon from "@mui/icons-material/Phone";
 import { mainColors } from "./themecolors";
 import { Facebook, Insta, PlayButton } from "./MediaIcons";
 
 export const ContactMe = () => {
   const appContext = useContext(AppContext);
-  const { horizontalPadding, mobile } = appContext;
+  const { horizontalPadding, mobile, commentText } = appContext;
 
   const [dataSent, setDataSent] = useState(false); //controls the sent modal
   const [formData, setFormData] = useState({
     name: "",
     phoneNumber: "",
     email: "",
-    message: "",
+    message: commentText ? `I am interested in the ${commentText} package` : "",
   });
 
   ///////////Form submission functions////////////////////////////////////////////////////
@@ -185,6 +182,7 @@ export const ContactMe = () => {
             <Grid item container xs={12} spacing={4}>
               <Grid item xs={12} md={9}>
                 <TextField
+                  autocomplete
                   id="Name"
                   label="Name"
                   name="name"
@@ -196,6 +194,7 @@ export const ContactMe = () => {
               </Grid>
               <Grid item xs={12} md={9}>
                 <TextField
+                  autocomplete
                   name="phoneNumber"
                   id="outlined-basic"
                   label="Phone Number"
@@ -221,6 +220,7 @@ export const ContactMe = () => {
               </Grid>
               <Grid item xs={12} md={9}>
                 <TextField
+                  autocomplete
                   id="outlined-basic"
                   onChange={updateFormData}
                   label="Email"
@@ -232,6 +232,7 @@ export const ContactMe = () => {
               </Grid>
               <Grid item xs={12} md={9}>
                 <TextField
+                  autocomplete
                   multiline
                   rows={4}
                   name="message"
