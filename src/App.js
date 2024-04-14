@@ -51,7 +51,7 @@ const HomeScreen = () => {
   const { horizontalPadding } = appContext;
   return (
     <Grid style={{ flex: 1, position: "relative", maxWidth: "100%" }}>
-      <div style={{ height: 500 }}>
+      <div style={{ flex: 1 }}>
         <Hero />
       </div>
       <div
@@ -127,7 +127,7 @@ const Hero = () => {
         backgroundPosition: "center",
         backgroundSize: "cover", //100% looks good on desktop, make tenary if want to change
         // backgroundSize: `100% auto`,
-        height: "100%",
+        height: "100vh",
         //  width: "100%",
         position: "relative",
         //  filter: "grayscale(100%)",
