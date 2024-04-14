@@ -44,13 +44,11 @@ export const Disclaimer = () => {
         }}
         className="footerP"
       >
-        All deposits associated with an appointment are non-refundable and
-        non-transferable. The appointment must be canceled prior to the 24 hour
-        cancellation deadline to avoid being charged the remaining amount to
-        total 100% of the service charge. All no call/no shows and appointments
-        canceled within the policy window are subject to being charged. In order
-        to reschedule a new appointment a new non-refundable and
-        non-transferable $25.00 deposit will be due upon booking.
+        All deposits associated with events are non-refundable . Events must be
+        canceled within 30 days to avoid being charged the remaining amount to
+        total 100% of the service charge. In the event the DJ terminates the
+        agreement within the time set above the DJ shall reimburse the deposit
+        to purchaser.
       </p>
       <div
         style={{
