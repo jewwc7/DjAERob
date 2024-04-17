@@ -5,6 +5,7 @@ import AppContext from "./context/appContext";
 import mediaImage from "./Photos/media.jpeg";
 import { mainColors } from "./themecolors";
 import { Facebook, Insta, PlayButton } from "./MediaIcons";
+import { SECTION_PADDING_TOP } from "./constants";
 
 const MediaSection = () => {
   const appContext = useContext(AppContext);
@@ -16,6 +17,7 @@ const MediaSection = () => {
       xs={12}
       style={{
         flex: 1,
+        paddingTop: SECTION_PADDING_TOP,
       }}
     >
       <Grid

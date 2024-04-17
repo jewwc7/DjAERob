@@ -35,7 +35,7 @@ function AppWrapper() {
 
 function App() {
   return (
-    <div>
+    <div style={{ backgroundColor: mainColors.black }}>
       <TopNav />
       <Routes>
         <Route path="/" element={<HomeScreen />}></Route>
