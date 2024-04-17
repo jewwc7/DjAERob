@@ -32,7 +32,7 @@ export const ContactMe = () => {
       alert("Name is required");
       return;
     }
-    if (!formData.email & !formData.phoneNumber) {
+    if (!formData.email && !formData.phoneNumber) {
       alert("Phone number or email is required");
       return;
     }
