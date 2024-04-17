@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import "./App.css";
-import { Grid } from "@mui/material";
+import { Grid, Hidden } from "@mui/material";
 import AppContext from "./context/appContext";
 import AppState, { scrollToSection } from "./context/AppState";
 import {
@@ -11,7 +11,7 @@ import {
 } from "react-router-dom";
 import { mainColors } from "./themecolors";
 import ContactMe from "./ContactMe";
-import Reviews from "./Reviews";
+import Reviews, { SmallScreenReviews } from "./Reviews";
 import Disclaimer from "./Disclaimer";
 import TopNav from "./TopNav";
 import heroImage from "./Photos/header.jpeg";

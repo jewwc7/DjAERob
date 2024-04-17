@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { mainColors } from "./themecolors";
 import { Grid, Paper } from "@mui/material";
-import { Extra, Services } from "./data";
+import { Services } from "./data";
 import MyButton from "./CustomButton";
 import { useNavigate } from "react-router-dom";
 import { NavPages } from "./utils/navigation";
@@ -9,15 +9,18 @@ import AppContext from "./context/appContext";
 
 interface Props {
   service: Services;
+  buttonWithBackground?: boolean;
 }
 
-export const ServiceCard: React.FC<Props> = ({ service }) => {
+export const ServiceCard: React.FC<Props> = ({
+  service,
+  buttonWithBackground = false,
+}) => {
   const { services, title, price, timeAvailable } = service;
   const navigate = useNavigate();
   const appContext = useContext(AppContext);
   //@ts-ignore
-  const { setCommentText } = appContext;
-
+  const { setCommentText, mobile } = appContext;
   //@ts-ignore
 
   function navigateToContact() {
@@ -26,58 +29,60 @@ export const ServiceCard: React.FC<Props> = ({ service }) => {
   }
 
   return (
-    <Grid item sm={6} xs={12} style={{}}>
+    <Grid item sm={"auto"} xs={12} style={{}}>
       <Paper
         className="nav-btns"
         style={{
-          minHeight: 100,
+          height: mobile ? "auto" : 300,
+          maxWidth: mobile ? "100%" : 250,
           display: "flex",
-          alignItems: "center",
+          justifyContent: "space-between",
           padding: 16,
           flexDirection: "column",
         }}
       >
-        <h2 style={{ color: mainColors.black }}>{title}</h2>
-        <h4 style={{ color: mainColors.black }}>{timeAvailable} hours</h4>
-        <div style={{ marginTop: 8 }}>
-          <ul>
-            {services.map((service) => {
-              return <li key={service}>{service}</li>;
-            })}
-          </ul>
-        </div>
-        <MyButton
-          //@ts-ignore
-          onClick={navigateToContact}
-          buttonStyle={{
-            marginTop: 24,
-          }}
-        />
-      </Paper>
-    </Grid>
-  );
-};
+        <div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <h2 style={{ color: mainColors.black, textAlign: "center" }}>
+              {title}
+            </h2>
+            <h4 style={{ color: mainColors.black, textAlign: "center" }}>
+              {timeAvailable} hours
+            </h4>
+          </div>
 
-interface ExtraProps {
-  extra: Extra;
-}
-export const Extras: React.FC<ExtraProps> = ({ extra }) => {
-  const { title, cost } = extra;
-  return (
-    <Grid item container sm={3.5} xs={6} style={{}}>
-      <Paper
-        className="nav-btns"
-        style={{
-          minHeight: 30,
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          padding: 16,
-        }}
-      >
-        <li style={{ color: mainColors.black, listStyleType: "none" }}>
-          {title}
-        </li>
+          <div style={{ marginTop: 8, display: "flex" }}>
+            <ul style={{ paddingLeft: 8 }}>
+              {services.map((service) => {
+                return (
+                  <li
+                    style={{ lineHeight: 1.4, fontWeight: 400 }}
+                    key={service}
+                  >
+                    {service}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </div>
+
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <MyButton
+            //@ts-ignore
+            onClick={navigateToContact}
+            buttonStyle={{
+              marginTop: 24,
+            }}
+            outlined={buttonWithBackground}
+            outlineStyleObj={{ borderColor: mainColors.gold, borderWidth: 2 }}
+          />
+        </div>
       </Paper>
     </Grid>
   );

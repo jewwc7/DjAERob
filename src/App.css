@@ -49,3 +49,18 @@ h1 {
   top: 0;
   left: 0;
 }
+
+.review-enter {
+  transform: translateY(-80%);
+}
+.review-enter-active {
+  transform: translateY(0%);
+  transition: transform 300ms;
+}
+.review-exit {
+  transform: translateY(0%);
+}
+.review-exit-active {
+  transform: translateY(60%);
+  transition: transform 200ms;
+}

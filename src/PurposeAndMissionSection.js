@@ -60,7 +60,7 @@ const PurposeAndMission = () => {
                 marginTop: mobile ? 32 : 0,
               }}
             >
-              About Me
+              About the DJ
             </h1>
             <p
               style={{

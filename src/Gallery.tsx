@@ -1,7 +1,13 @@
 import React, { useContext } from "react";
 import "./App.css";
-
-import { Grid, Grow, ImageList, ImageListItem, Fab } from "@mui/material";
+import {
+  Grid,
+  Grow,
+  ImageList,
+  ImageListItem,
+  Fab,
+  Hidden,
+} from "@mui/material";
 import AppContext from "./context/appContext";
 import { mainColors } from "./themecolors";
 import { galleryImages } from "./Photos/gallery/gallery";
@@ -9,6 +15,7 @@ import Carousel from "./Carousel";
 import MyButton from "./CustomButton";
 import { useNavigate } from "react-router-dom";
 import { NavPages } from "./utils/navigation";
+import { HEADER_BODY_MARGIN } from "./constants";
 
 const Gallery = ({}) => {
   const navigate = useNavigate();
@@ -16,16 +23,6 @@ const Gallery = ({}) => {
   const appContext = useContext(AppContext);
   //@ts-ignore : don't have context typed
   const { mobile } = appContext;
-
-  //   useEffect(() => {
-  //     const scrollToTop = () => {
-  //       window.scrollTo({
-  //         top: 0,
-  //         behavior: "smooth",
-  //       });
-  //     };
-  //     scrollToTop();
-  //   }, []);
 
   const photos = [...galleryImages];
   function navigateToContact() {
@@ -39,7 +36,7 @@ const Gallery = ({}) => {
         backgroundColor: mainColors.black,
         paddingLeft: 16,
         paddingRight: 16,
-        height: "90vh",
+        height: mobile ? "100%" : "90vh",
       }}
     >
       <Grid
@@ -47,24 +44,29 @@ const Gallery = ({}) => {
         container
         xs={12}
         alignItems="center"
-        justifyContent="space-between"
+        justifyContent={mobile ? "center" : "space-between"}
         direction={"row"}
         style={{ height: "15%" }}
       >
         <h1>Gallery</h1>
-        <MyButton children="Book now" onClick={navigateToContact} />
+        {!mobile && (
+          <MyButton children="Book now" onClick={navigateToContact} />
+        )}
       </Grid>
       <Grid
         item
         container
         xs={12}
-        // justifyContent="center"
         style={{
-          //    marginTop: 24,
           height: "85%",
         }}
       >
-        <Carousel images={photos} />
+        <Hidden mdDown>
+          <Carousel images={photos} />
+        </Hidden>
+        <Hidden mdUp>
+          <ImageGallery />
+        </Hidden>
       </Grid>
       {/* <Fab
         variant="extended"
@@ -90,6 +92,11 @@ const ImageGallery = ({}) => {
   //@ts-ignore : don;t have the context typed
   const { mobile, tablet } = appContext;
   const photos = [...galleryImages];
+  const navigate = useNavigate();
+
+  function navigateToContact() {
+    navigate(NavPages.contact);
+  }
 
   const fadeProps = [
     { appear: 1500, enter: 2000, exit: 0 },
@@ -104,9 +111,8 @@ const ImageGallery = ({}) => {
   ];
 
   return (
-    <Grid container>
-      <Carousel images={photos} />
-      {/* <ImageList
+    <Grid container style={{ marginTop: HEADER_BODY_MARGIN }}>
+      <ImageList
         gap={10}
         // rowHeight={"auto"}
         component="div"
@@ -129,7 +135,11 @@ const ImageGallery = ({}) => {
             </Grow>
           );
         })}
-      </ImageList> */}
+      </ImageList>
+      <MyButton
+        onClick={navigateToContact}
+        buttonStyle={{ position: "fixed", bottom: 20, right: 20 }} //FAB
+      />
     </Grid>
   );
 };

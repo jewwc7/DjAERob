@@ -11,6 +11,7 @@ interface ButtonProps {
   backgroundColor?: string; //used for hover effect,
   hoveredTextColor?: string; //used for hover effect,
   outlined?: boolean;
+  outlineStyleObj?: object;
 }
 
 const MyButton: React.FC<ButtonProps> = ({
@@ -23,15 +24,17 @@ const MyButton: React.FC<ButtonProps> = ({
   backgroundColor,
   hoveredTextColor,
   outlined,
+  outlineStyleObj,
 }) => {
   const raisedObj = raised ? dropShadow : {};
   const [hovered, setHovered] = useState({});
   const [textHoveredColor, setTextHoveredColor] = useState({});
   const outlineStyle = outlined
     ? {
-        backgroundColor: mainColors.black,
+        backgroundColor: "transparent",
         borderColor: mainColors.white,
         border: `1px solid ${mainColors.white}`,
+        ...(outlineStyleObj ?? {}),
       }
     : {};
   function buttonIsHovered() {
@@ -53,19 +56,6 @@ const MyButton: React.FC<ButtonProps> = ({
     setTextHoveredColor({});
   }
 
-  console.log(
-    {
-      flexDirection: "row",
-      ...defaultButtonStyle,
-      ...buttonStyle,
-      ...outlineStyle,
-      ...raisedObj,
-      ...hovered,
-    },
-    {
-      ...outlineStyle,
-    }
-  );
   return (
     <button
       onClick={onClick}

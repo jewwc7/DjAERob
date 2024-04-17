@@ -5,8 +5,8 @@ import AppContext from "./context/appContext";
 import { mainColors } from "./themecolors";
 
 const fadeProps = [
-  { appear: 1500, enter: 1000, exit: 1300 },
-  { appear: 1800, enter: 1300, exit: 1600 },
+  { appear: 1500, enter: 600, exit: 600 },
+  { appear: 1800, enter: 900, exit: 600 },
 ];
 
 const Carousel = ({ images }: { images: string[] }) => {
@@ -31,13 +31,13 @@ const Carousel = ({ images }: { images: string[] }) => {
           const prevIndex = (currentIndex - 2 + images.length) % images.length;
           setCurrentIndex(prevIndex);
         }
-      }, 1500); //give the pics some time to load
+      }, 500); //give the pics some time to load, be less than the below timeout
 
       setTimeout(() => {
         setTransIn(true);
         setTransOut(false);
         resolve(`go`);
-      }, 2000); // Simulating a delay of 2 seconds
+      }, 1000); // Simulating a delay of 1 seconds
 
       return;
     });
@@ -69,6 +69,7 @@ const Carousel = ({ images }: { images: string[] }) => {
         position: "relative",
         width: "100%",
         height: "100%",
+        overflow: "hidden", //stops the slide animation from adding scrollbars. https://github.com/mui/material-ui/issues/13701#issuecomment-666366980
       }}
     >
       <div
@@ -77,7 +78,6 @@ const Carousel = ({ images }: { images: string[] }) => {
           display: "flex",
           width: "100%",
           height: "85%",
-          //   alignItems: "center",
         }}
       >
         <Slide
@@ -90,7 +90,6 @@ const Carousel = ({ images }: { images: string[] }) => {
             src={images[currentIndex]}
             alt={`Slide ${currentIndex + 1}`}
             style={{ width: "50%", height: "100%", objectFit: "cover" }}
-            //objectFit:'contain'
           />
         </Slide>
 
