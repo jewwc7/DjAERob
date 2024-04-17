@@ -1,6 +1,6 @@
 // @ts-nocheck - becase it doesn't like the captialzed JPG
 import picOne from "./picOne.JPG";
-import picTwo from "./picTwo.JPG";
+import picTwo from "./picTwo.JPG"; //some reason does not display
 import picThree from "./picThree.JPG";
 import picFour from "./picFour.JPG";
 import picFive from "./picFive.JPG";
@@ -26,7 +26,6 @@ import picTwentyTwo from "./picTwentyTwo.JPG";
 
 export const galleryImages = [
   picOne,
-  picTwo,
   picThree,
   picFour,
   picFive,

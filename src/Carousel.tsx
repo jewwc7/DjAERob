@@ -89,7 +89,7 @@ const Carousel = ({ images }: { images: string[] }) => {
           <img
             src={images[currentIndex]}
             alt={`Slide ${currentIndex + 1}`}
-            style={{ width: "50%", height: "100%", objectFit: "cover" }}
+            style={{ width: "50%", height: "100%", objectFit: "contain" }}
           />
         </Slide>
 
