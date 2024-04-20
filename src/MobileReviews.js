@@ -1,0 +1,152 @@
+import React, { useContext, useState } from "react";
+import AppContext from "./context/appContext";
+import { Grid } from "@mui/material";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import { reviewArr } from "./reviewsText";
+import { mainColors } from "./themecolors";
+
+const themeColors = {
+  homeRed: "rgba(161, 8, 59,1)",
+  homeDarkOrange: "rgba(247, 188, 0,1)",
+  homeLightOrange: "rgba(249, 147, 1,1)",
+  homeYellowOrange: "rgba(247, 188, 0,1)",
+  homePurple: "rgba(84, 23, 67,1)",
+};
+export const MobileReviews = () => {
+  const appContext = useContext(AppContext);
+  const { horizontalPadding } = appContext;
+  const [dotIndex, setDotIndex] = useState(0);
+
+  const [currentReview, setCurrentReview] = useState(0);
+  function goToNext() {
+    const lengthOfReviews = reviewArr.length - 1;
+    if (currentReview === lengthOfReviews) {
+      setDotIndex(0);
+      return setCurrentReview(0);
+    } else {
+      setCurrentReview(currentReview + 1);
+      setDotIndex(currentReview + 1);
+    }
+  }
+  function goBack() {
+    if (currentReview === 0) return;
+    else {
+      setCurrentReview(currentReview - 1);
+      return setDotIndex(currentReview - 1);
+    }
+  }
+  function showReviews() {
+    return (
+      <div style={{ display: "flex", flexDirection: "row" }}>
+        <div
+          style={{
+            color: mainColors.black,
+            fontSize: 60,
+            fontFamily: "ReinaNeue-Heavy",
+          }}
+        >
+          "
+        </div>
+
+        <div>
+          <p style={{ textAlign: "center" }}>{reviewArr[currentReview].body}</p>
+          <p style={{ textAlign: "center", fontStyle: "italic" }}>
+            -- {reviewArr[currentReview].reviewer}
+          </p>
+        </div>
+        <div
+          style={{
+            color: mainColors.black,
+            fontSize: 60,
+            fontFamily: "ReinaNeue-Heavy",
+          }}
+        >
+          "
+        </div>
+      </div>
+    );
+  }
+
+  function displayDots() {
+    return reviewArr.map((review, index) => {
+      const onDotReview = dotIndex === index;
+      return (
+        <Grid
+          item
+          style={{
+            borderRadius: 50,
+            height: 10,
+            width: 10,
+            border: `.5px solid ${themeColors.homePurple}`,
+            marginRight: 5,
+            backgroundColor: onDotReview ? mainColors.gold : null,
+          }}
+          key={index.toString()}
+        ></Grid>
+      );
+    });
+  }
+  return (
+    <Grid
+      item
+      container
+      xs={12}
+      style={{
+        paddingTop: 24,
+        paddingBottom: 56,
+        paddingLeft: horizontalPadding,
+        paddingRight: horizontalPadding,
+        flex: 1,
+      }}
+    >
+      <Grid item container xs={12} alignItems="center" justifyContent="center">
+        {showReviews()}
+      </Grid>
+      <Grid
+        item
+        container
+        xs={12}
+        alignItems="center"
+        justifyContent={"space-between"}
+        style={{ marginTop: 32 }}
+      >
+        <Grid item container xs={1}>
+          <Grid item xs={12} container justifyContent="flex-start">
+            <ArrowBackIosNewIcon
+              sx={{
+                color: mainColors.gold,
+                fontSize: 20,
+                cursor: "pointer",
+              }}
+              onClick={goBack}
+            />
+          </Grid>
+        </Grid>
+        <Grid
+          item
+          container
+          xs={8}
+          alignItems="center"
+          justifyContent={"center"}
+        >
+          {displayDots()}
+        </Grid>
+        <Grid item container xs={1} justifyContent="flex-end">
+          <Grid item container xs={12} justifyContent="flex-end">
+            <ArrowForwardIosIcon
+              sx={{
+                color: mainColors.gold,
+                fontSize: 20,
+                cursor: "pointer",
+              }}
+              onClick={goToNext}
+            />
+          </Grid>
+        </Grid>
+      </Grid>
+    </Grid>
+  );
+};
+
+export default MobileReviews;
