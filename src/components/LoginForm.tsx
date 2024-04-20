@@ -1,7 +1,11 @@
 import React, { EventHandler, useState } from "react";
-import { useLoginMutation, Login, useAccountMutation } from "../apiSlice";
+import { useLoginMutation, Login } from "../apiSlice";
+import { useNavigate } from "react-router-dom";
+import { useAppSelector } from "../redux/hooks";
 
 const LoginForm = () => {
+  const navigate = useNavigate();
+
   const [userData, setUserData] = useState<Login>({
     username: "",
     password: "",
@@ -9,8 +13,6 @@ const LoginForm = () => {
 
   const [login, { data, isSuccess, isError, isLoading, error }] =
     useLoginMutation();
-
-  const [getAccountNumber, {}] = useAccountMutation();
 
   const handleUsernameChange = (event) => {
     setUserData({
@@ -29,19 +31,22 @@ const LoginForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const response = await login(userData);
-    console.log({ response });
+    console.log("Login form response:", { response });
+    if (response) {
+      console.warn("GOing to account component");
+      navigate("/account");
+    }
     setUserData({ username: "", password: "" });
   };
 
-  async function doSOmethingElse(event) {
-    event.preventDefault();
-
-    const response = await getAccountNumber({ accountNumber: 900220 });
-    console.log("accountNumber", { response });
-  }
-
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="username">Username:</label>
@@ -62,19 +67,6 @@ const LoginForm = () => {
           />
         </div>
         <button type="submit">Login</button>
-      </form>
-
-      <form onSubmit={doSOmethingElse} style={{ marginTop: 100 }}>
-        <div>
-          <label htmlFor="username">Account Number</label>
-          <input
-            type="text"
-            id="username"
-            value={"placeholder"}
-            //onChange={handleUsernameChange}
-          />
-        </div>
-        <button type="submit">Next</button>
       </form>
     </div>
   );

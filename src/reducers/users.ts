@@ -1,15 +1,34 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { apiSlice } from "../apiSlice";
+import Account from "../components/Account";
 
+export interface Account {
+  accountTerm: string;
+  accountType: string;
+  autoPay: boolean;
+  billingAddress: string;
+  createdDate: Date;
+  distributionMethods: string[];
+  id: number;
+  name: string;
+  number: number;
+  status: string;
+  tierLevel: number;
+  balance?: number;
+}
 interface InitialState {
-  user: { username: string; userid: number; accountNumber?: number } | null;
+  user: {
+    username: string;
+    userid: number;
+  } | null;
+  account: Account | null;
   token: string | null;
 }
 const initialState: InitialState = {
   user: null,
   token: null,
+  account: null,
 };
-const api = "";
 
 const userReducer = createSlice({
   name: "userReducer",
@@ -25,25 +44,6 @@ const userReducer = createSlice({
       state.token = action.payload;
       return state;
     },
-
-    setFundViewing: (state, action: PayloadAction<EntireFundView | null>) => {
-      return {
-        ...state,
-        fundViewing: action.payload,
-      };
-    },
-    setTickerViewing: (
-      state,
-      action: PayloadAction<initialState["tickerViewing"]>
-    ) => {
-      return {
-        ...state,
-        tickerViewing: {
-          ticker: action.payload.ticker,
-          isVisible: action.payload.isVisible,
-        },
-      };
-    },
   },
   extraReducers(builder) {
     ///need these so when get funds is successful, the action.payload
@@ -56,6 +56,7 @@ const userReducer = createSlice({
         return {
           ...state,
           user: {
+            ...state.user,
             username,
             userid,
           },
@@ -65,12 +66,27 @@ const userReducer = createSlice({
     );
     builder.addMatcher(
       apiSlice.endpoints.account.matchFulfilled,
-      (state, action) => {
+      (state, action): InitialState => {
         console.log("account.matchFulfilled", { action });
-
         return {
           ...state,
+          account: action.payload[0],
         };
+      }
+    );
+    builder.addMatcher(
+      apiSlice.endpoints.accountBalance.matchFulfilled,
+      (state, action): InitialState => {
+        console.log("accountBalance.matchFulfilled", { action });
+        if (state.account) {
+          return {
+            ...state,
+            account: {
+              ...state.account,
+              balance: action.payload.balance,
+            },
+          };
+        } else return state;
       }
     );
   },
@@ -95,5 +111,19 @@ const userReducer = createSlice({
 //     throw error;
 //   }
 // }),
+
+// Accounts {
+//   accountTerm: "RESIDENTIAL";
+//   accountType: "RESIDENTIAL";
+//   autoPay: true;
+//   billingAddress: "149 S. Barrington Ave, #707, Los Angeles, California 90049";
+//   createdDate: "2024-04-11 18:13:19";
+//   distributionMethods: ["Email"];
+//   id: 49113;
+//   name: "ReactDeveloper Interview";
+//   number: 900220;
+//   status: "Active";
+//   tierLevel: 0;
+// }
 export default userReducer.reducer;
 export const { setToken } = userReducer.actions;

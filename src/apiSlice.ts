@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { setToken } from "./reducers/users";
+import { Account, setToken } from "./reducers/users";
 import { RootState } from "./redux/store";
 
 const baseUrl = "https://sandbox-api.camvio.cloud/aboss-api/rest/v1/";
@@ -43,7 +43,6 @@ const apiSlice = createApi({
         console.log({ token });
         headers.set("X-API-Token", token);
       }
-      console.log(headers.forEach((h) => console.log({ h })));
 
       return headers;
     },
@@ -58,15 +57,21 @@ const apiSlice = createApi({
         };
       },
     }), //expected to be returned, parameters sent via body
-    account: builder.mutation<any, { accountNumber: number }>({
+    account: builder.mutation<
+      Omit<Account, "balance">[],
+      { accountNumber: number }
+    >({
       query: ({ accountNumber }) => ({
         url: `${EndPoints.accounts}=${accountNumber}`,
         method: HttpMethods.get,
       }),
     }),
-    accountBalance: builder.query<any, { accountId: number }>({
-      query: ({ accountId }) => ({
-        url: `${EndPoints.accounts}/${accountId}/balance`,
+    accountBalance: builder.mutation<
+      { balance: number; success: boolean },
+      number
+    >({
+      query: (accountId) => ({
+        url: `${EndPoints.accountBalance}/${accountId}/balance`,
         method: HttpMethods.get,
       }),
     }),
@@ -82,7 +87,7 @@ const apiSlice = createApi({
 export { apiSlice };
 export const {
   useLoginMutation,
-  useAccountBalanceQuery,
+  useAccountBalanceMutation,
   useAccountMutation,
   usePaymentMutation,
 } = apiSlice;

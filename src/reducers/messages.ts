@@ -44,6 +44,19 @@ const messageReducer = createSlice({
         };
       }
     );
+    builder.addMatcher(
+      isAnyOf(
+        apiSlice.endpoints.login.matchFulfilled,
+        apiSlice.endpoints.account.matchFulfilled
+      ),
+      (state, action) => {
+        return {
+          isVisible: true,
+          message: "Success!",
+          type: "success",
+        };
+      }
+    );
   },
 });
 

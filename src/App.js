@@ -4,6 +4,7 @@ import LoginForm from "./components/LoginForm";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import Message from "./components/Message";
+import Account from "./components/Account";
 
 //TODO
 //Delete WEbPhotos and photography FOlder
@@ -22,6 +23,8 @@ function App() {
     <div>
       <Routes>
         <Route path="/" element={<LoginForm />}></Route>
+        <Route path="/account" element={<Account />}></Route>
+
         {/* <Route path={`${NavPages.contact}`} element={<ContactMe />}></Route>
         <Route path={`${NavPages.gallery}`} element={<Gallery />}></Route> */}
       </Routes>
