@@ -44,13 +44,13 @@ const Services = () => {
         <Grid item container xs={12} spacing={1} style={{ marginTop: 16 }}>
           <Grid item container xs={12} sm={9} spacing={1}>
             {serviceArr.map((service, index) => {
-              const lastCard = serviceArr.length - 1 === index;
+              //const lastCard = serviceArr.length - 1 === index;
 
               return (
                 <ServiceCard
                   service={service}
                   key={service.title}
-                  buttonWithBackground={!lastCard}
+                  // buttonWithBackground={!lastCard}
                 />
               );
             })}
